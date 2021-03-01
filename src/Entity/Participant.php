@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ParticipantRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,7 +27,7 @@ class Participant
     /**
      * @ORM\Column(type="string", length=30)
      */
-    private $prénom;
+    private $prenom;
 
     /**
      * @ORM\Column(type="integer")
@@ -47,6 +49,16 @@ class Participant
      */
     private $actif;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=sortie::class, inversedBy="participants")
+     */
+    private $sorties;
+
+    public function __construct()
+    {
+        $this->sorties = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -64,14 +76,14 @@ class Participant
         return $this;
     }
 
-    public function getPrénom(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->prénom;
+        return $this->prenom;
     }
 
-    public function setPrénom(string $prénom): self
+    public function setPrenom(string $prenom): self
     {
-        $this->prénom = $prénom;
+        $this->prenom = $prenom;
 
         return $this;
     }
@@ -120,6 +132,30 @@ class Participant
     public function setActif(bool $actif): self
     {
         $this->actif = $actif;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|sortie[]
+     */
+    public function getSorties(): Collection
+    {
+        return $this->sorties;
+    }
+
+    public function addSorty(sortie $sorty): self
+    {
+        if (!$this->sorties->contains($sorty)) {
+            $this->sorties[] = $sorty;
+        }
+
+        return $this;
+    }
+
+    public function removeSorty(sortie $sorty): self
+    {
+        $this->sorties->removeElement($sorty);
 
         return $this;
     }

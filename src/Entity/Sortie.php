@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SortieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -71,6 +73,16 @@ class Sortie
      * @ORM\Column(type="integer")
      */
     private $etats_no_etat;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Participant::class, mappedBy="sorties")
+     */
+    private $participants;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -205,6 +217,33 @@ class Sortie
     public function setEtatsNoEtat(int $etats_no_etat): self
     {
         $this->etats_no_etat = $etats_no_etat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->addSorty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->removeElement($participant)) {
+            $participant->removeSorty($this);
+        }
 
         return $this;
     }
