@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SiteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,22 @@ class Site
      */
     private $nom_site;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="Sites")
+     */
+    private $participants;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="site")
+     */
+    private $Sorties;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+        $this->Sorties = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +53,66 @@ class Site
     public function setNomSite(string $nom_site): self
     {
         $this->nom_site = $nom_site;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->setSites($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->removeElement($participant)) {
+            // set the owning side to null (unless already changed)
+            if ($participant->getSites() === $this) {
+                $participant->setSites(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getSorties(): Collection
+    {
+        return $this->Sorties;
+    }
+
+    public function addSorty(Sortie $sorty): self
+    {
+        if (!$this->Sorties->contains($sorty)) {
+            $this->Sorties[] = $sorty;
+            $sorty->setSite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSorty(Sortie $sorty): self
+    {
+        if ($this->Sorties->removeElement($sorty)) {
+            // set the owning side to null (unless already changed)
+            if ($sorty->getSite() === $this) {
+                $sorty->setSite(null);
+            }
+        }
 
         return $this;
     }

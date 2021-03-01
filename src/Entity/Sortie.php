@@ -79,6 +79,27 @@ class Sortie
      */
     private $participants;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Participant::class, inversedBy="organisateur")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $participant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="Sorties")
+     */
+    private $site;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="sorties")
+     */
+    private $Etat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Lieux::class, inversedBy="sorties")
+     */
+    private $Lieu;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -244,6 +265,54 @@ class Sortie
         if ($this->participants->removeElement($participant)) {
             $participant->removeSorty($this);
         }
+
+        return $this;
+    }
+
+    public function getParticipant(): ?Participant
+    {
+        return $this->participant;
+    }
+
+    public function setParticipant(?Participant $participant): self
+    {
+        $this->participant = $participant;
+
+        return $this;
+    }
+
+    public function getSite(): ?Site
+    {
+        return $this->site;
+    }
+
+    public function setSite(?Site $site): self
+    {
+        $this->site = $site;
+
+        return $this;
+    }
+
+    public function getEtat(): ?Etat
+    {
+        return $this->Etat;
+    }
+
+    public function setEtat(?Etat $Etat): self
+    {
+        $this->Etat = $Etat;
+
+        return $this;
+    }
+
+    public function getLieu(): ?Lieux
+    {
+        return $this->Lieu;
+    }
+
+    public function setLieu(?Lieux $Lieu): self
+    {
+        $this->Lieu = $Lieu;
 
         return $this;
     }

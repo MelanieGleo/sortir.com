@@ -54,9 +54,20 @@ class Participant
      */
     private $sorties;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="participant")
+     */
+    private $organisateur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="participants")
+     */
+    private $Sites;
+
     public function __construct()
     {
         $this->sorties = new ArrayCollection();
+        $this->organisateur = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -156,6 +167,48 @@ class Participant
     public function removeSorty(sortie $sorty): self
     {
         $this->sorties->removeElement($sorty);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getOrganisateur(): Collection
+    {
+        return $this->organisateur;
+    }
+
+    public function addOrganisateur(Sortie $organisateur): self
+    {
+        if (!$this->organisateur->contains($organisateur)) {
+            $this->organisateur[] = $organisateur;
+            $organisateur->setParticipant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrganisateur(Sortie $organisateur): self
+    {
+        if ($this->organisateur->removeElement($organisateur)) {
+            // set the owning side to null (unless already changed)
+            if ($organisateur->getParticipant() === $this) {
+                $organisateur->setParticipant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getSites(): ?Site
+    {
+        return $this->Sites;
+    }
+
+    public function setSites(?Site $Sites): self
+    {
+        $this->Sites = $Sites;
 
         return $this;
     }

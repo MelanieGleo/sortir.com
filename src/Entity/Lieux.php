@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LieuxRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,21 @@ class Lieux
      * @ORM\Column(type="integer")
      */
     private $villes_no_ville;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="Lieu")
+     */
+    private $sorties;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Villes::class, inversedBy="Lieux")
+     */
+    private $Ville;
+
+    public function __construct()
+    {
+        $this->sorties = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +137,48 @@ class Lieux
     public function setVillesNoVille(int $villes_no_ville): self
     {
         $this->villes_no_ville = $villes_no_ville;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getSorties(): Collection
+    {
+        return $this->sorties;
+    }
+
+    public function addSorty(Sortie $sorty): self
+    {
+        if (!$this->sorties->contains($sorty)) {
+            $this->sorties[] = $sorty;
+            $sorty->setLieu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSorty(Sortie $sorty): self
+    {
+        if ($this->sorties->removeElement($sorty)) {
+            // set the owning side to null (unless already changed)
+            if ($sorty->getLieu() === $this) {
+                $sorty->setLieu(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getVille(): ?Villes
+    {
+        return $this->Ville;
+    }
+
+    public function setVille(?Villes $Ville): self
+    {
+        $this->Ville = $Ville;
 
         return $this;
     }
