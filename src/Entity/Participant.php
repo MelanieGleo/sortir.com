@@ -62,7 +62,7 @@ class Participant
     /**
      * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="participants")
      */
-    private $Sites;
+    private $site;
 
     /**
      * @ORM\Column(type="string", length=20)
@@ -211,14 +211,14 @@ class Participant
         return $this;
     }
 
-    public function getSites(): ?Site
+    public function getSite(): ?Site
     {
-        return $this->Sites;
+        return $this->site;
     }
 
-    public function setSites(?Site $Sites): self
+    public function setSite(?Site $site): self
     {
-        $this->Sites = $Sites;
+        $this->site = $site;
 
         return $this;
     }

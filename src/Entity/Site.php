@@ -69,7 +69,7 @@ class Site
     {
         if (!$this->participants->contains($participant)) {
             $this->participants[] = $participant;
-            $participant->setSites($this);
+            $participant->setSite($this);
         }
 
         return $this;
@@ -79,8 +79,8 @@ class Site
     {
         if ($this->participants->removeElement($participant)) {
             // set the owning side to null (unless already changed)
-            if ($participant->getSites() === $this) {
-                $participant->setSites(null);
+            if ($participant->getSite() === $this) {
+                $participant->setSite(null);
             }
         }
 
