@@ -64,6 +64,16 @@ class Participant
      */
     private $Sites;
 
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $pseudo;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $motDePasse;
+
     public function __construct()
     {
         $this->sorties = new ArrayCollection();
@@ -164,9 +174,9 @@ class Participant
         return $this;
     }
 
-    public function removeSorty(sortie $sorty): self
+    public function removeSorty(sortie $sortie): self
     {
-        $this->sorties->removeElement($sorty);
+        $this->sorties->removeElement($sortie);
 
         return $this;
     }
@@ -209,6 +219,30 @@ class Participant
     public function setSites(?Site $Sites): self
     {
         $this->Sites = $Sites;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getMotDePasse(): ?string
+    {
+        return $this->motDePasse;
+    }
+
+    public function setMotDePasse(string $motDePasse): self
+    {
+        $this->motDePasse = $motDePasse;
 
         return $this;
     }
