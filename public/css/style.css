@@ -2,6 +2,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
+    color: #333333
 }
 
 .container {
@@ -45,4 +46,33 @@ body {
 
 .col-8x12 {
     width: 65.666666%;
+}
+
+.bandeau h1{
+    font-size: 2em;
+    font-family: 'Akaya Telivigala', cursive;
+}
+
+.bandeau{
+    height: 70px;
+    padding-top : 30px;
+    padding-bottom: 30px;
+    background-color: #0CCBED;
+}
+
+.bandeau a{
+    text-decoration: none;
+    color: white
+}
+
+.bandeau .col-9x12{
+    padding-left: 30px;
+}
+
+.bandeau div{
+    vertical-align: unset;
+}
+
+.bandeau .col-3x12 a {
+    padding-left: 20px;
 }
