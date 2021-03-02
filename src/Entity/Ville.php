@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=VillesRepository::class)
+ * @ORM\Entity(repositoryClass=VilleRepository::class)
  */
 class Ville
 {
@@ -37,11 +37,11 @@ class Ville
     /**
      * @ORM\OneToMany(targetEntity=Lieu::class, mappedBy="Ville")
      */
-    private $Lieux;
+    private $Lieu;
 
     public function __construct()
     {
-        $this->Lieux = new ArrayCollection();
+        $this->Lieu = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,27 +88,27 @@ class Ville
     /**
      * @return Collection|Lieu[]
      */
-    public function getLieux(): Collection
+    public function getLieu(): Collection
     {
-        return $this->Lieux;
+        return $this->Lieu;
     }
 
-    public function addLieux(Lieu $lieux): self
+    public function addLieu(Lieu $lieu): self
     {
-        if (!$this->Lieux->contains($lieux)) {
-            $this->Lieux[] = $lieux;
-            $lieux->setVille($this);
+        if (!$this->Lieu->contains($lieu)) {
+            $this->Lieu[] = $lieu;
+            $lieu->setVille($this);
         }
 
         return $this;
     }
 
-    public function removeLieux(Lieu $lieux): self
+    public function removeLieu(Lieu $lieu): self
     {
-        if ($this->Lieux->removeElement($lieux)) {
+        if ($this->Lieu->removeElement($lieu)) {
             // set the owning side to null (unless already changed)
-            if ($lieux->getVille() === $this) {
-                $lieux->setVille(null);
+            if ($lieu->getVille() === $this) {
+                $lieu->setVille(null);
             }
         }
 

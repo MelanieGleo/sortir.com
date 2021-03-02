@@ -47,7 +47,7 @@ class Lieu
     /**
      * @ORM\Column(type="integer")
      */
-    private $villes_no_ville;
+    private $ville_no_ville;
 
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="Lieu")
@@ -55,7 +55,7 @@ class Lieu
     private $sorties;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Villes::class, inversedBy="Lieux")
+     * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="Lieu")
      */
     private $Ville;
 
@@ -129,14 +129,14 @@ class Lieu
         return $this;
     }
 
-    public function getVillesNoVille(): ?int
+    public function getVilleNoVille(): ?int
     {
-        return $this->villes_no_ville;
+        return $this->ville_no_ville;
     }
 
-    public function setVillesNoVille(int $villes_no_ville): self
+    public function setVilleNoVille(int $ville_no_ville): self
     {
-        $this->villes_no_ville = $villes_no_ville;
+        $this->ville_no_ville = $ville_no_ville;
 
         return $this;
     }
