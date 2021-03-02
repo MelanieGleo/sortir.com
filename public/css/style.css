@@ -1,0 +1,48 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.element {
+    font-size: 1em;
+    margin: 0;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: -0.25em;
+    vertical-align: top;
+}
+
+.col-6x12 {
+    width : 50%;
+}
+
+.col-8x12 {
+    width: 66.666666%
+}
+
+.col-3x4 {
+    width: 33.33333333333%
+}
+
+.col-1x12 {
+    width: 8.33333%;
+}
+
+.col-3x12 {
+    width: 25%;
+}
+
+.col-9x12 {
+    width: 75%;
+}
+
+.col-8x12 {
+    width: 65.666666%;
+}
