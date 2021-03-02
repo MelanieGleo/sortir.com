@@ -20,11 +20,6 @@ class Lieu
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $no_lieu;
-
-    /**
      * @ORM\Column(type="string", length=30)
      */
     private $nom_lieu;
@@ -44,10 +39,6 @@ class Lieu
      */
     private $longitude;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $ville_no_ville;
 
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="Lieu")
@@ -67,30 +58,6 @@ class Lieu
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNoLieu(): ?int
-    {
-        return $this->no_lieu;
-    }
-
-    public function setNoLieu(int $no_lieu): self
-    {
-        $this->no_lieu = $no_lieu;
-
-        return $this;
-    }
-
-    public function getNomLieu(): ?string
-    {
-        return $this->nom_lieu;
-    }
-
-    public function setNomLieu(string $nom_lieu): self
-    {
-        $this->nom_lieu = $nom_lieu;
-
-        return $this;
     }
 
     public function getRue(): ?string
@@ -129,18 +96,6 @@ class Lieu
         return $this;
     }
 
-    public function getVilleNoVille(): ?int
-    {
-        return $this->ville_no_ville;
-    }
-
-    public function setVilleNoVille(int $ville_no_ville): self
-    {
-        $this->ville_no_ville = $ville_no_ville;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Sortie[]
      */
@@ -149,22 +104,22 @@ class Lieu
         return $this->sorties;
     }
 
-    public function addSorty(Sortie $sorty): self
+    public function addSortie(Sortie $sortie): self
     {
-        if (!$this->sorties->contains($sorty)) {
-            $this->sorties[] = $sorty;
-            $sorty->setLieu($this);
+        if (!$this->sorties->contains($sortie)) {
+            $this->sorties[] = $sortie;
+            $sortie->setLieu($this);
         }
 
         return $this;
     }
 
-    public function removeSorty(Sortie $sorty): self
+    public function removeSortie(Sortie $sortie): self
     {
-        if ($this->sorties->removeElement($sorty)) {
+        if ($this->sorties->removeElement($sortie)) {
             // set the owning side to null (unless already changed)
-            if ($sorty->getLieu() === $this) {
-                $sorty->setLieu(null);
+            if ($sortie->getLieu() === $this) {
+                $sortie->setLieu(null);
             }
         }
 
