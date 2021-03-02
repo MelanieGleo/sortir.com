@@ -96,7 +96,7 @@ class Sortie
     private $Etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Lieux::class, inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sorties")
      */
     private $Lieu;
 
