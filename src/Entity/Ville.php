@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=VillesRepository::class)
  */
-class Villes
+class Ville
 {
     /**
      * @ORM\Id
@@ -35,7 +35,7 @@ class Villes
     private $code_postal;
 
     /**
-     * @ORM\OneToMany(targetEntity=Lieux::class, mappedBy="Ville")
+     * @ORM\OneToMany(targetEntity=Lieu::class, mappedBy="Ville")
      */
     private $Lieux;
 
@@ -86,14 +86,14 @@ class Villes
     }
 
     /**
-     * @return Collection|Lieux[]
+     * @return Collection|Lieu[]
      */
     public function getLieux(): Collection
     {
         return $this->Lieux;
     }
 
-    public function addLieux(Lieux $lieux): self
+    public function addLieux(Lieu $lieux): self
     {
         if (!$this->Lieux->contains($lieux)) {
             $this->Lieux[] = $lieux;
@@ -103,7 +103,7 @@ class Villes
         return $this;
     }
 
-    public function removeLieux(Lieux $lieux): self
+    public function removeLieux(Lieu $lieux): self
     {
         if ($this->Lieux->removeElement($lieux)) {
             // set the owning side to null (unless already changed)

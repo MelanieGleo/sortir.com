@@ -55,7 +55,7 @@ class Participant
     private $sorties;
 
     /**
-     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="participant")
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="participOrga")
      */
     private $organisateur;
 
@@ -183,7 +183,7 @@ class Participant
     {
         if (!$this->organisateur->contains($organisateur)) {
             $this->organisateur[] = $organisateur;
-            $organisateur->setParticipant($this);
+            $organisateur->setParticipOrga($this);
         }
 
         return $this;
@@ -193,8 +193,8 @@ class Participant
     {
         if ($this->organisateur->removeElement($organisateur)) {
             // set the owning side to null (unless already changed)
-            if ($organisateur->getParticipant() === $this) {
-                $organisateur->setParticipant(null);
+            if ($organisateur->getParticipOrga() === $this) {
+                $organisateur->setParticipOrga(null);
             }
         }
 

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=LieuxRepository::class)
  */
-class Lieux
+class Lieu
 {
     /**
      * @ORM\Id
@@ -171,12 +171,12 @@ class Lieux
         return $this;
     }
 
-    public function getVille(): ?Villes
+    public function getVille(): ?Ville
     {
         return $this->Ville;
     }
 
-    public function setVille(?Villes $Ville): self
+    public function setVille(?Ville $Ville): self
     {
         $this->Ville = $Ville;
 
