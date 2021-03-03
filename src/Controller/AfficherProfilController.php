@@ -15,12 +15,12 @@ class AfficherProfilController extends AbstractController
      */
     public function afficherProfil(): Response
     {
-        /*$id = 2;
+        $id = 2;
         $repo = $this->getDoctrine()->getRepository(Participant::class);
-        $profil = $repo->find($id);*/
-        //if(!$profil)
-          //  throw new NotFoundHttpException('Profil not found');
-        return $this->render('afficher_profil/AfficherProfil.html.twig' /*,['profil' => $profil]*/);
+        $profil = $repo->find($id);
+        if(!$profil)
+            throw new NotFoundHttpException('Profil not found');
+        return $this->render('afficher_profil/AfficherProfil.html.twig' ,['profil' => $profil]);
     }
 
 
