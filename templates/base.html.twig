@@ -6,7 +6,9 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
         {% endblock %}
 
         {% block javascripts %}
@@ -14,6 +16,18 @@
         {% endblock %}
     </head>
     <body>
+        {% block bandeau %}
+            <div class="bandeau">
+                <div class="element col-9x12">
+                    <h1> <a href=""> Sortir.com </a> </h1>
+                </div>
+                <div class="element col-3x12">
+                    <a href="{{ path('Accueil') }}"> Accueil </a>
+                    <a href="{{ path('AP') }}"> Mon profil </a>
+                    <a href=""> Se déconnecter </a>
+                </div>
+            </div>
+        {% endblock %}
         {% block body %}{% endblock %}
     </body>
 </html>

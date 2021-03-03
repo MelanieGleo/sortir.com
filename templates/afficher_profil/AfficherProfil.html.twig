@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AfficherProfilController!{% endblock %}
+
+{% block body %}
+
+
+    <div class="container">
+        <div class="element center">
+            {{ profil.pseudo }}
+        </div>
+    </div>
+    <div class="container">
+        <div class="element col-3x12">
+            <img src="https://unadel.org/wp-content/uploads/2013/08/test-imagre-de-fond6.jpg">
+        </div>
+        <div class="element col-6x12">
+            ID {{ profil.id }}
+            NOM {{ profil.nom }}
+            PRENOM {{ profil.prenom }}
+            TELEPHONE {{ profil.telephone }}
+            EMAIL {{ profil.mail }}
+            ADMIN {{ profil.administrateur }}
+            ACTIF {{ profil.actif }}
+        </div>
+    </div>
+
+    <h1>test</h1>
+{% endblock %}

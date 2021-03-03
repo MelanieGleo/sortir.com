@@ -7,8 +7,10 @@
 /public/bundles/
 /var/
 /vendor/
-public/.htaccess
+/public/.htaccess
 /.composer.lock
+public/.htaccess
+
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
