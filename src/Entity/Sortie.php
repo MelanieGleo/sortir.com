@@ -49,10 +49,6 @@ class Sortie
      */
     private $infosSortie;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $etatSortie;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -164,18 +160,6 @@ class Sortie
     public function setInfosSortie(?string $infosSortie): self
     {
         $this->infosSortie = $infosSortie;
-
-        return $this;
-    }
-
-    public function getEtatSortie(): ?int
-    {
-        return $this->etatSortie;
-    }
-
-    public function setEtatSortie(?int $etatSortie): self
-    {
-        $this->etatSortie = $etatSortie;
 
         return $this;
     }
