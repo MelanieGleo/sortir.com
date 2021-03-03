@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Participant;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AfficherProfilController extends AbstractController
@@ -20,15 +21,9 @@ class AfficherProfilController extends AbstractController
         $profil = $repo->find($id);
         if(!$profil)
             throw new NotFoundHttpException('Profil not found');
-        return $this->render('afficher_profil/AfficherProfil.html.twig' ,['profil' => $profil]);
+        return $this->render('profil/afficherProfil.html.twig',['profil' => $profil]);
     }
 
 
-    /**
-     * @Route("/Accueil", name="Accueil")
-     */
-    public function Accueil(): Response
-    {
-        return $this->render('afficher_profil/Accueil.html.twig');
-    }
+
 }

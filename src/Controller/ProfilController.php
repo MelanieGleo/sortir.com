@@ -2,19 +2,22 @@
 
 namespace App\Controller;
 
+use App\Form\ModifierProfilType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ModifierProfilController extends AbstractController
+
+class ProfilController extends AbstractController
 {
     /**
-     * @Route("/modifier/profil", name="modifier_profil")
+     * @Route("/profil/modifier", name="modifier_profil")
      */
-    public function index(): Response
+    public function modifier(): Response
     {
+        $form = $this->createForm(ModifierProfilType::class);
         return $this->render('profil/modifierProfil.html.twig', [
-            'controller_name' => 'ModifierProfilController',
+            "modifier_profil_form" => $form->createView()
         ]);
     }
 }
