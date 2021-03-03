@@ -22,7 +22,7 @@ class Site
     /**
      * @ORM\Column(type="string", length=30)
      */
-    private $nom_site;
+    private $nomSite;
 
     /**
      * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="Sites")
@@ -47,12 +47,12 @@ class Site
 
     public function getNomSite(): ?string
     {
-        return $this->nom_site;
+        return $this->nomSite;
     }
 
-    public function setNomSite(string $nom_site): self
+    public function setNomSite(string $nomSite): self
     {
-        $this->nom_site = $nom_site;
+        $this->nomSite = $nomSite;
 
         return $this;
     }
@@ -69,7 +69,7 @@ class Site
     {
         if (!$this->participants->contains($participant)) {
             $this->participants[] = $participant;
-            $participant->setSites($this);
+            $participant->setSite($this);
         }
 
         return $this;
@@ -79,8 +79,8 @@ class Site
     {
         if ($this->participants->removeElement($participant)) {
             // set the owning side to null (unless already changed)
-            if ($participant->getSites() === $this) {
-                $participant->setSites(null);
+            if ($participant->getSite() === $this) {
+                $participant->setSite(null);
             }
         }
 
