@@ -21,7 +21,7 @@ class AfficherProfilController extends AbstractController
         $id = 2;
         $profil = $participantRepository->InfosProfil($id);
         if(!$profil)
-            throw new NotFoundHttpException('Profil not found');
+            throw new NotFoundHttpException('profil not found');
 
         return $this->render('profil/afficherProfil.html.twig' ,['profils' => $profil]);
     }
@@ -32,7 +32,7 @@ class AfficherProfilController extends AbstractController
      */
     public function Accueil(): Response
     {
-        return $this->render('profil/accueil.html.twig');
+        return $this->render('accueil.html.twig');
     }
 
 }
