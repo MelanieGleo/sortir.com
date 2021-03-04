@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AfficherProfilController!{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/afficherProfil.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {%  for profil in profils %}
+        <div class="container center">
+            <div class="element title">
+                {{ profil.pseudo }}
+            </div>
+        </div>
+        <div class="container">
+            <div class="element col-3x12">
+                <img src="https://unadel.org/wp-content/uploads/2013/08/test-imagre-de-fond6.jpg">
+            </div>
+            <div class="element col-6x12 Profil">
+                <div>
+                    <div class="label">
+                        Nom :
+                    </div>
+                    <div class="info">
+                        {{ profil.nom }}
+                    </div>
+                </div>
+                <div>
+                    <div class="label">
+                        Prénom :
+                    </div>
+                    <div class="info">
+                        {{ profil.prenom }}
+                    </div>
+                </div>
+                <div>
+                    <div class="label">
+                        Téléphone :
+                    </div>
+                    <div class="info">
+                        {{ profil.telephone }}
+                    </div>
+                </div>
+                <div>
+                    <div class="label">
+                        Email :
+                    </div>
+                    <div class="info">
+                        {{ profil.mail }}
+                    </div>
+                </div>
+                <div>
+                    <div class="label">
+                        Site :
+                    </div>
+                    <div class="info">
+                        {{ profil.site.nomSite}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

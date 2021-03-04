@@ -1,0 +1,20 @@
+.title{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-size: 2em;
+}
+
+.Profil div div{
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+.label{
+    padding-left: 30%;
+    width: 30%;
+}
+
+.info{
+    font-weight: bold
+}
+
