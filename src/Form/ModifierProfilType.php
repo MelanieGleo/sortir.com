@@ -13,15 +13,14 @@ class ModifierProfilType extends AbstractType
     {
         $builder
             ->add('pseudo')
-            ->add('nom')
             ->add('prenom')
+            ->add('nom')
             ->add('telephone')
             ->add('mail')
-            ->add('administrateur')
-            ->add('actif')
             ->add('motDePasse')
 //            TODO confirmation mdp
-
+//            TODO site de ratachement
+//            TODO upload photo
         ;
     }
 

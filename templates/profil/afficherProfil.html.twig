@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AfficherProfilController!{% endblock %}
+    {% block title %} Profile | {{ parent() }}
+    {% endblock %}
+
+    {% block lien %}
+        <div class="element col-3x12">
+            <a href="{{ path('modifier_profil') }}"> Modifier </a>
+            <a href=""> Se déconnecter </a>
+        </div>
+    {% endblock %}
 
 {% block body %}
 
