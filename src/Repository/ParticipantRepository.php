@@ -19,6 +19,18 @@ class ParticipantRepository extends ServiceEntityRepository
         parent::__construct($registry, Participant::class);
     }
 
+    public function InfosProfil($id = 2): array
+    {
+        $queryBuilder = $this->createQueryBuilder("p")
+            ->andWhere('p.id = :val')
+            ->setParameter('val', $id)
+            ->leftJoin("p.site", 's');
+
+        $query = $queryBuilder->getQuery();
+        $profil = $query->getResult();
+
+        return $profil;
+    }
     // /**
     //  * @return Participant[] Returns an array of Participant objects
     //  */
