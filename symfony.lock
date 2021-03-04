@@ -81,9 +81,6 @@
     "egulias/email-validator": {
         "version": "2.1.25"
     },
-    "eloquent/composer-npm-bridge": {
-        "version": "5.0.0"
-    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },

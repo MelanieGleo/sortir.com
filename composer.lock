@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "007723274948bedaa804f7fcacc1cc9a",
+    "content-hash": "0c7f78d3ee650fa2238ee8b0d04c21a7",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1461,69 +1461,6 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
-        },
-        {
-            "name": "eloquent/composer-npm-bridge",
-            "version": "5.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/eloquent/composer-npm-bridge.git",
-                "reference": "9f34180e2643db9a775af5f9dd83a6c71c765747"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/eloquent/composer-npm-bridge/zipball/9f34180e2643db9a775af5f9dd83a6c71c765747",
-                "reference": "9f34180e2643db9a775af5f9dd83a6c71c765747",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^2",
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "composer/composer": "^2",
-                "eloquent/code-style": "^1",
-                "eloquent/phony-phpunit": "^6",
-                "errors/exceptions": "^0.2",
-                "friendsofphp/php-cs-fixer": "^2",
-                "phpunit/phpunit": "^8"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Eloquent\\Composer\\NpmBridge\\NpmBridgePlugin"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Eloquent\\Composer\\NpmBridge\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Erin Millard",
-                    "email": "ezzatron@gmail.com",
-                    "homepage": "http://ezzatron.com/"
-                }
-            ],
-            "description": "NPM integration for Composer packages.",
-            "homepage": "https://github.com/eloquent/composer-npm-bridge",
-            "keywords": [
-                "Bridge",
-                "composer",
-                "composer-plugin",
-                "integration",
-                "npm",
-                "package",
-                "plugin"
-            ],
-            "support": {
-                "issues": "https://github.com/eloquent/composer-npm-bridge/issues",
-                "source": "https://github.com/eloquent/composer-npm-bridge/tree/5.0.0"
-            },
-            "time": "2020-11-23T00:42:23+00:00"
         },
         {
             "name": "friendsofphp/proxy-manager-lts",
