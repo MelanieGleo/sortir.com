@@ -1,18 +1,10 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %} Profile | {{ parent() }}
-    {% endblock %}
+{% block title %}Hello AfficherProfilController!{% endblock %}
 
-    {% block lien %}
-        <div class="element col-3x12">
-            <a href="{{ path('modifier_profil') }}"> Modifier </a>
-            <a href=""> Se déconnecter </a>
-        </div>
-    {% endblock %}
-
-    {% block css %}
+{% block css %}
     <link rel="stylesheet" href="{{ asset('css/afficherProfil.css') }}">
-    {% endblock %}
+{% endblock %}
 
 {% block body %}
 
@@ -24,7 +16,7 @@
         </div>
         <div class="container">
             <div class="element col-3x12">
-                <img src="https://unadel.org/wp-content/uploads/2013/08/test-imagre-de-fond6.jpg">
+                <img src="https://unadel.org/wp-content/uploads/2013/08/test-imagre-de-fond6.jpg" alt="">
             </div>
             <div class="element col-6x12 Profil">
                 <div>
