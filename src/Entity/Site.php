@@ -30,7 +30,7 @@ class Site
     private $participants;
 
     /**
-     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="site")
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="Site")
      */
     private $Sorties;
 

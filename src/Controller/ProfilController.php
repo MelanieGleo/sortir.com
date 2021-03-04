@@ -20,8 +20,9 @@ class ProfilController extends AbstractController
     public function modifier(Request $request): Response
     {
         $participant = new Participant();
-        $form = $this->createForm(ModifierProfilType::class, $participant);
-        $form->handleRequest($request);
+
+        $profilForm = $this->createForm(ModifierProfilType::class, $participant);
+        $profilForm->handleRequest($request);
 
 //        if($form -> isSubmitted() & $form->isValid()){
 //            //Todo encode new password
@@ -31,7 +32,7 @@ class ProfilController extends AbstractController
 
 
         return $this->render('profil/modifierProfil.html.twig', [
-            "modifier_profil_form" => $form->createView()
+            "modifier_profil_form" => $profilForm->createView()
         ]);
     }
 }
