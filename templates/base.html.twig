@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Sortir.com{% endblock %}</title>
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="icon" href="/sortir.com/public/images/favico.ico">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
     {% endblock %}
@@ -15,6 +17,7 @@
             <div class="element col-9x12">
                 <h1><a href=""> Sortir.com </a></h1>
             </div>
+        </div>
 
             {% block lien%}
                 <div class="element col-3x12">
@@ -23,16 +26,14 @@
                 </div>
             {% endblock %}
 
-        </div>
     {% endblock %}
 
-</head>
 
 <body>
 
-{% block body %}{% endblock %}
+    {% block body %}{% endblock %}
 
-{% block javascripts %}{% endblock %}
+    {% block javascripts %}{% endblock %}
 
 </body>
 </html>
