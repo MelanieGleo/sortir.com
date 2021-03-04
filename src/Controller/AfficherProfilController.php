@@ -7,6 +7,7 @@ use App\Entity\Site;
 use App\Repository\ParticipantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AfficherProfilController extends AbstractController
@@ -21,7 +22,7 @@ class AfficherProfilController extends AbstractController
         $profil = $participantRepository->InfosProfil($id);
         if(!$profil)
             throw new NotFoundHttpException('profil not found');
-        return $this->render('afficherProfil.html.twig',['profils' => $profil]);
+        return $this->render('profil/afficherProfil.html.twig' ,['profils' => $profil]);
     }
 
 
@@ -32,4 +33,5 @@ class AfficherProfilController extends AbstractController
     {
         return $this->render('accueil.html.twig');
     }
+
 }
