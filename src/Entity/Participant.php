@@ -75,7 +75,7 @@ class Participant implements UserInterface
     private $pseudo;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=64)
      */
     private $motDePasse;
 
@@ -276,4 +276,5 @@ class Participant implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
 }

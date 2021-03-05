@@ -31,7 +31,7 @@ class AfficherProfilController extends AbstractController
      */
     public function Accueil(): Response
     {
-        return $this->render('accueil.html.twig');
+        return $this->render('profil/accueil.html.twig');
     }
 
 }

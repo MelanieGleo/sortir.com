@@ -1,19 +1,36 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     encoders:
         App\Entity\Participant:
             algorithm: auto
 
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
+        users:
+            entity:
+                # the class of the entity that represents users
+                class: App\Entity\Participant
+
+        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
-            lazy: true
-            provider: users_in_memory
+            lazy : true
+            provider : users
+            guard:
+                authenticators:
+                    - App\Security\AppCustomAuthenticator
+            remember_me:
+                    secret: '%kernel.secret%'
+                    lifetime: 604800 # 1 week in seconds
+                    path: /
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: app_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
