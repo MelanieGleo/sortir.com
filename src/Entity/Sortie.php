@@ -57,7 +57,7 @@ class Sortie
 
 
     /**
-     * @ORM\ManyToMany(targetEntity=Participant::class, mappedBy="sorties")
+     * @ORM\ManyToMany(targetEntity=Participant::class, mappedBy="Sorties")
      */
     private $participants;
 
@@ -73,12 +73,12 @@ class Sortie
     private $site;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="Sorties")
      */
     private $Etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="Sorties")
      */
     private $Lieu;
 
