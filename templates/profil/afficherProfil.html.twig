@@ -8,7 +8,6 @@
 
 {% block body %}
 
-    {%  for profil in profils %}
         <div class="container center">
             <div class="element title">
                 {{ profil.pseudo }}
@@ -56,10 +55,9 @@
                         Site :
                     </div>
                     <div class="info">
-                        {{ profil.site.nomSite}}
+                        {{ profil.site}}
                     </div>
                 </div>
             </div>
         </div>
-    {% endfor %}
 {% endblock %}
