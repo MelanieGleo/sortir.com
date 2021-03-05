@@ -7,9 +7,12 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="icon" href="/sortir.com/public/images/favico.ico">
+        <link rel="icon" href="{{ asset('images/favico.ico') }}">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+    {% endblock %}
+
+    {% block css %}
     {% endblock %}
 
     {% block bandeau %}
@@ -17,23 +20,18 @@
             <div class="element col-9x12">
                 <h1><a href=""> Sortir.com </a></h1>
             </div>
-        </div>
 
             {% block lien%}
                 <div class="element col-3x12">
-                    <a href="{{ path('AP') }}"> Mon profil </a>
+                    <a href="{{ path('afficher_profil') }}"> Mon profil </a>
                     <a href=""> Se déconnecter </a>
                 </div>
             {% endblock %}
-
+        </div>
     {% endblock %}
-
-
-<body>
 
     {% block body %}{% endblock %}
 
     {% block javascripts %}{% endblock %}
 
-</body>
 </html>

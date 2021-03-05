@@ -16,16 +16,15 @@
             {{ form_row(modifier_profil_form.nom) }}
             {{ form_row(modifier_profil_form.telephone) }}
             {{ form_row(modifier_profil_form.mail) }}
-            {{ form_row(modifier_profil_form.motDePasse) }}
-    {#        {{ form_row(modifier_profil_form.confirmation_motDePasse) }}#}
+{#            {{ form_row(modifier_profil_form.motDePasse.first) }}#}
+{#            {{ form_row(modifier_profil_form.motDePasse.second) }}#}
+{#            {{ form_row(modifier_profil_form.confirmation_motDePasse) }}#}
     {#        {{ form_row(modifier_profil_form.siteDeRattachement) }}#}
     {#        {{ form_row(modifier_profil_form.url) }}#}
 
             {{ form_widget(modifier_profil_form) }}
-            <button>Modifier</button>
+            <button type="submit" class="btn">Modifier</button>
         {{ form_end(modifier_profil_form) }}
-
-{% block body %}
 
 {% endblock %}
 

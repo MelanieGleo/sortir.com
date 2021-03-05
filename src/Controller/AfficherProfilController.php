@@ -14,7 +14,7 @@ class AfficherProfilController extends AbstractController
 {
 
     /**
-     * @Route("/profil", name="AP")
+     * @Route("/profil", name="afficher_profil")
      */
     public function afficherProfil(ParticipantRepository $participantRepository): Response
     {
