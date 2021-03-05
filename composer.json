@@ -52,13 +52,10 @@
         "symfony/debug-bundle": "^5.2",
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^5.2",
-<<<<<<< HEAD
+
         "symfony/stopwatch": "^5.2",
-        "symfony/var-dumper": "5.2.*",
-        "symfony/web-profiler-bundle": "^5.2"
-=======
+        "symfony/web-profiler-bundle": "^5.2",
         "symfony/var-dumper": "^5.2"
->>>>>>> ff68a6c777eb647e739b84a536468118b7b75890
     },
     "config": {
         "optimize-autoloader": true,

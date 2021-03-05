@@ -4,8 +4,6 @@ security:
             algorithm: auto
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
-    encoders:
-        App\Entity\Participant: sha512
     providers:
         users:
             entity:
