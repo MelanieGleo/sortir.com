@@ -75,7 +75,7 @@ class Participant implements UserInterface
     private $pseudo;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=250)
      */
     private $motDePasse;
 
