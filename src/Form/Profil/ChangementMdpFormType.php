@@ -10,26 +10,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class ChangePasswordFormType extends AbstractType
+class ChangementMdpFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('pseudo', null, [
-                "label" => "Pseudo"
-            ])
-            ->add('nom', null, [
-                "label" => "Nom"
-            ])
-            ->add('prenom', null, [
-                "label" => "Prénom"
-            ])
-            ->add('telephone', null, [
-                "label" => "Téléphone"
-            ])
-            ->add('mail', EmailType::class, [
-                "label" => "Email"
-            ])
+//TODO passer messages en francais
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [

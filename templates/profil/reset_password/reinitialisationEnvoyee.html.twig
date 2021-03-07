@@ -3,6 +3,7 @@
 {% block title %}Password Reset Email Sent{% endblock %}
 
 {% block body %}
+{#    TODO passer message en francais #}
     <p>
         An email has been sent that contains a link that you can click to reset your password.
         This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.

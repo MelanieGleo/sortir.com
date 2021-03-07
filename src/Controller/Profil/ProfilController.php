@@ -3,7 +3,7 @@
 namespace App\Controller\Profil;
 
 use App\Entity\Participant;
-use App\Form\Profil\ModifierType;
+use App\Form\Profil\ModifierFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +22,6 @@ class ProfilController extends AbstractController
         return $this->render('index.html.twig');
     }
 
-
     /**
      * @Route("/profil/modifier", name="app_modifier")
      * @param Request $request
@@ -32,7 +31,7 @@ class ProfilController extends AbstractController
     {
         $participant = new Participant();
 
-        $profilForm = $this->createForm(ModifierType::class, $participant);
+        $profilForm = $this->createForm(ModifierFormType::class, $participant);
         $profilForm->handleRequest($request);
 
 //        if($form -> isSubmitted() & $form->isValid()){

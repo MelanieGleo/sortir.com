@@ -4,14 +4,15 @@ namespace App\Controller\Profil;
 
 use App\Entity\Participant;
 
-use App\Form\Profil\ChangePasswordFormType;
+use App\Form\Profil\ChangementMdpFormType;
 
-use App\Form\Profil\ResetPasswordRequestFormType;
+use App\Form\Profil\DemandeReinitialisationMdpFormType;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,7 +24,7 @@ use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 /**
  * @Route("/reset-password")
  */
-class ResetPasswordController extends AbstractController
+class ReinitialisationMdpController extends AbstractController
 {
     use ResetPasswordControllerTrait;
 
@@ -44,7 +45,7 @@ class ResetPasswordController extends AbstractController
      */
     public function request(Request $request, MailerInterface $mailer): Response
     {
-        $form = $this->createForm(ResetPasswordRequestFormType::class);
+        $form = $this->createForm(DemandeReinitialisationMdpFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -54,7 +55,7 @@ class ResetPasswordController extends AbstractController
             );
         }
 
-        return $this->render('profil/reset_password/request.html.twig', [
+        return $this->render('profil/reset_password/demandeReinitialisationMdp.html.twig', [
             'requestForm' => $form->createView(),
         ]);
     }
@@ -71,7 +72,7 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_forgot_password_request');
         }
 
-        return $this->render('profil/reset_password/check_email.html.twig', [
+        return $this->render('profil/reset_password/reinitialisationEnvoyee.html.twig', [
             'resetToken' => $resetToken,
         ]);
     }
@@ -112,7 +113,7 @@ class ResetPasswordController extends AbstractController
         }
 
         // The token is valid; allow the user to change their password.
-        $form = $this->createForm(ChangePasswordFormType::class);
+        $form = $this->createForm(ChangementMdpFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -134,7 +135,7 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('profil/reset_password/reset.html.twig', [
+        return $this->render('profil/reset_password/reinitialisationMdp.html.twig', [
             'resetForm' => $form->createView(),
         ]);
     }
@@ -164,17 +165,18 @@ class ResetPasswordController extends AbstractController
 
             return $this->redirectToRoute('app_check_email');
         }
-
+//TODO passez en francais
         $email = (new TemplatedEmail())
             ->from(new Address('sortir.com.eni.0307@gmail.com', 'Sortir.com reinitialisation du mot de passe'))
             ->to($user->getMail())
             ->subject('Your password reset request')
-            ->htmlTemplate('reset_password/email.html.twig')
+            ->htmlTemplate('profil/reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
             ]);
 
-        $mailer->send($email);
+            $mailer->send($email);
+
 
         // Store the token object in session for retrieval in check-email route.
         $this->setTokenObjectInSession($resetToken);
