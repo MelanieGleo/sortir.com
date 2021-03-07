@@ -48,8 +48,6 @@ class InscriptionType extends AbstractType
                     ]),
                 ],
             ])
-            //            TODO confirmation mdp
-            //            todo nouveau mot de passe(pour mofifier profil)
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
