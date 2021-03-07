@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Profil;
 
 use App\Entity\Participant;
-use App\Form\RegistrationFormType;
+use App\Form\InscriptionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,11 +14,14 @@ class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new Participant();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(InscriptionFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -35,10 +38,12 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('Accueil');
+            return $this->redirectToRoute('app_index',[
+                'participant' => $user
+            ]);
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('profil/inscription.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }

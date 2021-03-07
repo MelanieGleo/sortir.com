@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Profil;
 
 use App\Entity\Participant;
 use Symfony\Component\Form\AbstractType;
@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ModifierProfilType extends AbstractType
+class ModifierType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

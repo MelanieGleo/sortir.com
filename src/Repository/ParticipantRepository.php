@@ -27,9 +27,7 @@ class ParticipantRepository extends ServiceEntityRepository
             ->leftJoin("p.site", 's');
 
         $query = $queryBuilder->getQuery();
-        $profil = $query->getResult();
-
-        return $profil;
+        return $query->getResult();
     }
     // /**
     //  * @return Participant[] Returns an array of Participant objects
