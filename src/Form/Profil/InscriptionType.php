@@ -17,16 +17,22 @@ class InscriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudo')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
+            ->add('pseudo', null, [
+                "label" => "Pseudo"
             ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('nom', null, [
+                "label" => "Nom"
+            ])
+            ->add('prenom', null, [
+                "label" => "Prénom"
+            ])
+            ->add('telephone', null, [
+                "label" => "Téléphone"
+            ])
+            ->add('mail', EmailType::class, [
+                "label" => "Email"
+            ])
+            ->add('motDePasse', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -42,12 +48,21 @@ class InscriptionType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('nom')
-            ->add('prenom')
-            ->add('telephone')
-            ->add('mail')
-            ->add('administrateur')
-            ->add('actif');
+            //            TODO confirmation mdp
+            //            todo nouveau mot de passe(pour mofifier profil)
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'You should agree to our terms.',
+                    ]),
+                ],
+            ])
+            ->add('administrateur', CheckboxType::class, [
+                "label" => "Administrateur"
+            ])
+            ->add('actif');//            TODO upload photo
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
