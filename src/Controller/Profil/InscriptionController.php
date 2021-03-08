@@ -3,7 +3,6 @@
 namespace App\Controller\Profil;
 
 use App\Entity\Participant;
-
 use App\Form\Profil\InscriptionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

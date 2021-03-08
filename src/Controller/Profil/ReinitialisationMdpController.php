@@ -3,16 +3,13 @@
 namespace App\Controller\Profil;
 
 use App\Entity\Participant;
-
 use App\Form\Profil\ChangementMdpFormType;
-
 use App\Form\Profil\DemandeReinitialisationMdpFormType;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
@@ -166,16 +163,22 @@ class ReinitialisationMdpController extends AbstractController
             return $this->redirectToRoute('app_check_email');
         }
 //TODO passez en francais
+
         $email = (new TemplatedEmail())
-            ->from(new Address('sortir.com.eni.0307@gmail.com', 'Sortir.com reinitialisation du mot de passe'))
+            ->from(new Address('sortir.com@sortir.com', 'Sortir.comReinitMdp'))
             ->to($user->getMail())
-            ->subject('Your password reset request')
+            ->subject('Sortir.com reinitialisation du mot de passe')
             ->htmlTemplate('profil/reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
             ]);
 
-            $mailer->send($email);
+        $mailer->send($email);
+
+        $this->addFlash('message', 'Un email vous a été envoyé, 
+                                                     vous devez cliquer sur le lien 
+                                                     que vous allez recevoir pour changer 
+                                                     votre mot de passe');
 
 
         // Store the token object in session for retrieval in check-email route.
