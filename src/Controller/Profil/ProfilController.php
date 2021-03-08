@@ -4,6 +4,7 @@ namespace App\Controller\Profil;
 
 use App\Entity\Participant;
 use App\Form\Profil\ModifierFormType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,19 +28,25 @@ class ProfilController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function modifier(Request $request): Response
+
+    //TODO traiter formulaire
+    public function modifier(Request $request,EntityManagerInterface $entityManager): Response
     {
-        $participant = new Participant();
+//        $participant = new Participant();pas de nouveau profil mais recuperer user connecter
 
         $profilForm = $this->createForm(ModifierFormType::class, $participant);
         $profilForm->handleRequest($request);
 
-//        if($form -> isSubmitted() & $form->isValid()){
+//        if($profilForm -> isSubmitted() & $profilForm->isValid()){
 //            //Todo encode new password
 //            dump($participant);
 //
+//            //insertion en base
+//
+//            $entityManager->persist($participant);
+//            $entityManager->flush();
+//
 //        }
-
 
         return $this->render('profil/modifierProfil.html.twig', [
             "modifier_profil_form" => $profilForm->createView()
