@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SortieController!{% endblock %}
+
+{% block body %}
+    {% for sortie in sorties %}
+        <div>
+            id:
+            {{ sortie.id }}
+        </div>
+        <div>
+            nom:
+            {{ sortie.nom }}
+        </div>
+        <div>
+            duree:
+            {{ sortie.duree }}
+            limiteinscription:
+            {{ sortie.dateLimitInscription|date("m/d/Y") }}
+
+        </div>
+        <div>
+            dateHeureDebut:
+            {{ sortie.dateHeureDebut|date("m/d/Y") }}
+        </div>
+        <div>
+            infosSortie:
+            {{ sortie.infosSortie }}
+        </div>
+        <div>
+            urlPhoto:
+            {{ sortie.urlPhoto }}
+        </div>
+        <div>
+            nom:
+{#            {{ sortie.participants }}#}
+        </div>
+    {% endfor %}
+{% endblock %}

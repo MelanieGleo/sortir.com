@@ -19,7 +19,6 @@ class AfficherProfilController extends AbstractController
     public function afficherProfil(ParticipantRepository $participantRepository): Response
     {
         $user = $this->getUser();
-        var_dump($user);
         if(!$user)
             throw new NotFoundHttpException('profil not found');
         return $this->render('profil/afficherProfil.html.twig' ,['profil' => $user]);

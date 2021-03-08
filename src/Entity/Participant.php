@@ -254,7 +254,13 @@ class Participant implements UserInterface
 
     public function getRoles()
     {
-            return [];
+        $user = $this->getAdministrateur();
+        if($user){
+            $roles[] = 'ROLE_ADMIN';
+        } else {
+            $roles[] = 'ROLE_USER';
+        }
+        return array_unique($roles);
     }
 
     public function getPassword()
