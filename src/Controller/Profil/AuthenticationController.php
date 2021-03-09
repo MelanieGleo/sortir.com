@@ -41,4 +41,14 @@ class AuthenticationController extends AbstractController
         ]);
 //        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+
+    public function resetPassword()
+    {
+        // require the user to log in during *this* session
+        // if they were only logged in via a remember me cookie, they
+        // will be redirected to the login page
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        // ...
+    }
 }

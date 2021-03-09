@@ -1,5 +1,5 @@
 {
-  "name": "sortir.com",
+  "name": "sortir.com_v2",
   "version": "1.0.0",
   "description": "```\r git clone https://github.com/MelanieGleo/sortir.com.git\r cd sortir.com\r composer install\r ```\r ### Instruction pour récupérer les données sur sa branche ###\r Sur la branche main :\r ```\r git pull \r git checkout nom_de_la_branche\r ```",
   "main": "index.js",
@@ -7,8 +7,8 @@
     "test": "tests"
   },
   "dependencies": {
-    "@popperjs/core": "^2.9.1",
-    "bootstrap": "^5.0.0-beta2"
+    "bootstrap": "^5.0.0-beta2",
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {},
   "scripts": {
