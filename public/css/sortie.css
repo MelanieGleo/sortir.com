@@ -1,0 +1,32 @@
+.sortie{
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+.nom{
+    font-weight: bold;
+    color: gray;
+    font-size: 1.5em;
+}
+
+.duree{
+    font-size: .8em;
+    display:inline-block;
+}
+
+.limiteinscription{
+    display:inline-block;
+    padding-left: 20px;
+    font-size: .8em;
+}
+
+.dateDebut{
+    display:inline-block;
+    padding-left: 20px;
+    font-size: .8em;
+}
+
+.Infos{
+    font-size: 1.2em;
+    color: gray;
+}

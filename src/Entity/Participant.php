@@ -79,6 +79,11 @@ class Participant implements UserInterface
      */
     private $motDePasse;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $emplacementPhoto;
+
     public function __construct()
     {
         $this->sorties = new ArrayCollection();
@@ -170,16 +175,17 @@ class Participant implements UserInterface
         return $this->sorties;
     }
 
-    public function addSorty(sortie $sorty): self
+    public function addSortie(sortie $sortie): self
     {
-        if (!$this->sorties->contains($sorty)) {
-            $this->sorties[] = $sorty;
+        if (!$this->sorties->contains($sortie)) {
+            $this->sorties[] = $sortie;
         }
 
         return $this;
+
     }
 
-    public function removeSorty(sortie $sortie): self
+    public function removeSortie(sortie $sortie): self
     {
         $this->sorties->removeElement($sortie);
 
@@ -254,9 +260,19 @@ class Participant implements UserInterface
 
     public function getRoles()
     {
-        return [];
+        $user = $this->getAdministrateur();
+        if($user){
+            $roles[] = 'ROLE_ADMIN';
+        } else {
+            $roles[] = 'ROLE_USER';
+        }
+        return array_unique($roles);
     }
 
+    /**
+     * @return string
+     * @override
+     */
     public function getPassword()
     {
         return $this->motDePasse;
@@ -267,6 +283,10 @@ class Participant implements UserInterface
         // TODO: Implement getSalt() method.
     }
 
+    /**
+     * @return string
+     * @override
+     */
     public function getUsername()
     {
        return $this->pseudo;
@@ -275,6 +295,18 @@ class Participant implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getEmplacementPhoto(): ?string
+    {
+        return $this->emplacementPhoto;
+    }
+
+    public function setEmplacementPhoto(?string $emplacementPhoto): self
+    {
+        $this->emplacementPhoto = $emplacementPhoto;
+
+        return $this;
     }
 
 }

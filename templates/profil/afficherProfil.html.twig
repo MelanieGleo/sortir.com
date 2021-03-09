@@ -6,20 +6,21 @@
     <link rel="stylesheet" href="{{ asset('css/afficherProfil.css') }}">
 {% endblock %}
 
-            {% block autreLienProfil%}
-                <a href=" {{ path ('app_modifier')  }}">Modifier</a>
+            {% block autreLienProfil %}
+                <a href=" {{ path ('app_modifier') }}">Modifier</a>
             {% endblock %}
 
 {% block body %}
 
     <div class="container center">
         <div class="element title">
-            {{ profil.pseudo }}
+            {{ app.user.pseudo }}
         </div>
     </div>
     <div class="container">
         <div class="element col-3x12">
-            <img src="https://unadel.org/wp-content/uploads/2013/08/test-imagre-de-fond6.jpg">
+            <img src="images/photoParticipant/small/{{ app.user.emplacementPhoto }}"/>
+
         </div>
         <div class="element col-6x12 Profil">
             <div>
@@ -27,7 +28,7 @@
                     Nom :
                 </div>
                 <div class="info">
-                    {{ profil.nom }}
+                    {{ app.user.nom }}
                 </div>
             </div>
             <div>
@@ -35,7 +36,7 @@
                     Prénom :
                 </div>
                 <div class="info">
-                    {{ profil.prenom }}
+                    {{ app.user.prenom }}
                 </div>
             </div>
             <div>
@@ -43,7 +44,7 @@
                     Téléphone :
                 </div>
                 <div class="info">
-                    {{ profil.telephone }}
+                    {{ app.user.telephone }}
                 </div>
             </div>
             <div>
@@ -51,7 +52,7 @@
                     Email :
                 </div>
                 <div class="info">
-                    {{ profil.mail }}
+                    {{ app.user.mail }}
                 </div>
             </div>
             <div>
@@ -59,7 +60,7 @@
                     Site :
                 </div>
                 <div class="info">
-                    {{ profil.site}}
+                    {{ app.user.site }}
                 </div>
             </div>
         </div>

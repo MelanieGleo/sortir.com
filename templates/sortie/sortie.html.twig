@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SortieController!{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/sortie.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% for sortie in sorties %}
+        <div class="sortie container">
+            <div class="element col-3x12">
+                <div class="photo">
+                    <img src="{{ sortie.urlPhoto }}">
+                </div>
+            </div>
+            <div class ="element col-9x12">
+                <div class="nom">
+                    {{ sortie.nom }}
+                </div>
+                <div class="duree">
+                    durée :
+                    {{ sortie.duree }}
+                </div>
+                <div class="limiteinscription">
+                    date limite d'inscription :
+                    {{ sortie.dateLimitInscription|date("m/d/Y") }}
+                </div>
+                <div class="dateDebut">
+                    début :
+                    {{ sortie.dateHeureDebut|date("m/d/Y") }}
+                </div>
+                <div class="Infos">
+                    {{ sortie.infosSortie }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
