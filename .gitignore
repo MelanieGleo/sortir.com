@@ -10,7 +10,7 @@
 /public/.htaccess
 
 public/.htaccess
-
+/node_modules
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
