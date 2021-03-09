@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0267b9beca1afd8c4f6363856eb684ad",
+    "content-hash": "923e1d10caf081e16173b0428318a537",
     "packages": [
+        {
+            "name": "claviska/simpleimage",
+            "version": "3.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/claviska/SimpleImage.git",
+                "reference": "d4652ab80aa87d3f5bb6daa857ca6d57c1b421a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/claviska/SimpleImage/zipball/d4652ab80aa87d3f5bb6daa857ca6d57c1b421a1",
+                "reference": "d4652ab80aa87d3f5bb6daa857ca6d57c1b421a1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "league/color-extractor": "0.3.*",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "claviska": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cory LaViska",
+                    "homepage": "http://www.abeautifulsite.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP class that makes working with images as simple as possible.",
+            "support": {
+                "issues": "https://github.com/claviska/SimpleImage/issues",
+                "source": "https://github.com/claviska/SimpleImage/tree/3.6.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/claviska",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-12-28T16:27:14+00:00"
+        },
         {
             "name": "composer/package-versions-deprecated",
             "version": "1.11.99.1",
@@ -1463,6 +1512,69 @@
             "time": "2020-12-29T14:50:06+00:00"
         },
         {
+            "name": "eloquent/composer-npm-bridge",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eloquent/composer-npm-bridge.git",
+                "reference": "9f34180e2643db9a775af5f9dd83a6c71c765747"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eloquent/composer-npm-bridge/zipball/9f34180e2643db9a775af5f9dd83a6c71c765747",
+                "reference": "9f34180e2643db9a775af5f9dd83a6c71c765747",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "composer/composer": "^2",
+                "eloquent/code-style": "^1",
+                "eloquent/phony-phpunit": "^6",
+                "errors/exceptions": "^0.2",
+                "friendsofphp/php-cs-fixer": "^2",
+                "phpunit/phpunit": "^8"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Eloquent\\Composer\\NpmBridge\\NpmBridgePlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Eloquent\\Composer\\NpmBridge\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erin Millard",
+                    "email": "ezzatron@gmail.com",
+                    "homepage": "http://ezzatron.com/"
+                }
+            ],
+            "description": "NPM integration for Composer packages.",
+            "homepage": "https://github.com/eloquent/composer-npm-bridge",
+            "keywords": [
+                "Bridge",
+                "composer",
+                "composer-plugin",
+                "integration",
+                "npm",
+                "package",
+                "plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/eloquent/composer-npm-bridge/issues",
+                "source": "https://github.com/eloquent/composer-npm-bridge/tree/5.0.0"
+            },
+            "time": "2020-11-23T00:42:23+00:00"
+        },
+        {
             "name": "friendsofphp/proxy-manager-lts",
             "version": "v1.0.3",
             "source": {
@@ -1748,6 +1860,64 @@
                 }
             ],
             "time": "2021-02-25T21:54:58+00:00"
+        },
+        {
+            "name": "league/color-extractor",
+            "version": "0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/color-extractor.git",
+                "reference": "837086ec60f50c84c611c613963e4ad2e2aec806"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/color-extractor/zipball/837086ec60f50c84c611c613963e4ad2e2aec806",
+                "reference": "837086ec60f50c84c611c613963e4ad2e2aec806",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.4.0"
+            },
+            "replace": {
+                "matthecat/colorextractor": "*"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2",
+                "phpunit/phpunit": "~5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathieu Lechat",
+                    "email": "math.lechat@gmail.com",
+                    "homepage": "http://matthecat.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extract colors from an image as a human would do.",
+            "homepage": "https://github.com/thephpleague/color-extractor",
+            "keywords": [
+                "color",
+                "extract",
+                "human",
+                "image",
+                "palette"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/color-extractor/issues",
+                "source": "https://github.com/thephpleague/color-extractor/tree/master"
+            },
+            "time": "2016-12-15T09:30:02+00:00"
         },
         {
             "name": "monolog/monolog",

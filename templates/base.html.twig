@@ -35,6 +35,7 @@
                     {%endblock%}
                     <a href="{{ path('app_logout') }}"> Se déconnecter </a>
                     <span>Participant: {{ app.user.prenom|first|upper }}{{ app.user.prenom|slice(1)|lower }} {{ app.user.nom|first|upper  }} . </span>
+                    <span>Date du jour: {{ "now"|date("m/d/Y") }}</span>
 {#                    Todo ajouter date#}
                 {% else %}
                     <a href="{{ path('app_register') }}">S'inscrire</a>
