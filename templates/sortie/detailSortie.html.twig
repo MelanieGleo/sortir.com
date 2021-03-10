@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="center">
-            <a href="" class="register"> s'inscrire </a>
+            <a href="{{ path('app_inscriptionSortie', {'sortieID':sortie.id}) }}" class="register"> s'inscrire </a>
         </div>
         <div class="participants">
             Participants a cette sortie:
@@ -54,6 +54,15 @@
                     </li>
                 {% endfor %}
             </ul>
+        </div>
+        <div class="participants">
+            <div>
+                La sortie a été organisé par :
+                {{ sortie.participOrga.nom }} {{ sortie.participOrga.prenom }}
+            </div>
+            <div>
+                contact : {{ sortie.participOrga.mail }}
+            </div>
         </div>
 
 {% endblock %}
