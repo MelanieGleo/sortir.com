@@ -30,3 +30,25 @@
     font-size: 1.2em;
     color: gray;
 }
+
+a{
+    text-decoration: none;
+}
+
+.register{
+    text-decoration: none;
+    color: white;
+    background: #048b9a;
+    padding: 10px 10px 10px 10px;
+}
+
+ul, li {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.participants{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 30px;
+}

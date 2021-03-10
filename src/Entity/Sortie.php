@@ -57,7 +57,7 @@ class Sortie
 
 
     /**
-     * @ORM\ManyToMany(targetEntity=Participant::class, mappedBy="Sorties")
+     * @ORM\ManyToMany(targetEntity=Participant::class, mappedBy="sorties")
      */
     private $participants;
 
