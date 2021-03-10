@@ -188,7 +188,7 @@ class Sortie
     {
         if (!$this->participants->contains($participant)) {
             $this->participants[] = $participant;
-            $participant->addSorty($this);
+            $participant->addSortie($this);
         }
 
         return $this;

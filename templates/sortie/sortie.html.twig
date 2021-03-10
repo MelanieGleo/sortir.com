@@ -16,7 +16,7 @@
             </div>
             <div class ="element col-9x12">
                 <div class="nom">
-                    <a href="sortie/{{ sortie.id }}">
+                    <a href="{{ path('app_detailSortie', {'id':sortie.id}) }}">
                         {{ sortie.nom }}
                     </a>
                 </div>
