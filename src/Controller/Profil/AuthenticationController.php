@@ -36,7 +36,7 @@ class AuthenticationController extends AbstractController
     public function logout(): Response
     {
 //        TODO il faut retirer l utilisateur de la session
-        return $this->render('index.html.twig', [
+        return $this->render('profil/login.html.twig', [
 
         ]);
 //        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');

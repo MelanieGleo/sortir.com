@@ -10,9 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class SortieController extends AbstractController
 {
     /**
-     * @Route("/sortie", name="sortie")
+     * @Route("/", name="app_sortie")
      */
-    public function index(): Response
+    public function sortie(): Response
     {
         $repo = $this->getDoctrine()->getRepository(Sortie::class);
         $sorties = $repo->InfosSorties();

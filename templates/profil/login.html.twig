@@ -3,21 +3,12 @@
 {% block title %}Log in!{% endblock %}
 
 {% block lien %}
-    <a href="{{ path('app_index') }}">Accueil</a>
+
     <a href="{{ path('app_register') }}">S'inscrire</a>
 {% endblock %}
 
 {% block body %}
     <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-        {% endif %}
 
         <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
 
@@ -44,16 +35,15 @@
 {#            #}{# ... #}
 {#        </form>#}
 
-        {#
-        TODO Toggle switch bouton
+
+{#        TODO Toggle switch bouton#}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
         <fieldset class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="remember_me_checkbox" name="_remember_me">
             <label  class="custom-control-input" for="remember_me_checkbox" >Se souvenir de moi </label>
-        </fieldset> #}
+        </fieldset>
 
-        {# TODO mot de passe oublier #}
         <div>
             <a href="{{ path('app_forgot_password_request') }}"> Mot de passe oublié </a>
         </div>

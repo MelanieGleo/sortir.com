@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SortieController!{% endblock %}
+{% block title %}Sortie | {{ parent() }}{% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('css/sortie.css') }}">
 {% endblock %}
 
+
+
 {% block body %}
+
     {% for sortie in sorties %}
         <div class="sortie container">
             <div class="element col-3x12">
