@@ -39,10 +39,7 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
             ->add('mail', EmailType::class, [
                 "label" => "Email"
             ])
-//            ->add('motDePasse', PasswordType::class, [
-//                "label" => "Mot de passe",
-//                "required" => false
-//            ])
+
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => false,
