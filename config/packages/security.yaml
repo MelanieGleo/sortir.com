@@ -2,13 +2,13 @@ security:
     encoders:
         App\Entity\Participant:
             algorithm: auto
-
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         users:
             entity:
                 # the class of the entity that represents users
                 class: App\Entity\Participant
+
 
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
@@ -31,6 +31,7 @@ security:
                 # where to redirect after logout
                 target: app_login
 
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
@@ -41,4 +42,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profil, roles: ROLE_USER }
+
+#         - { path: ^/profil, roles: ROLE_USER }

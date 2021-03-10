@@ -8,9 +8,9 @@
 /var/
 /vendor/
 /public/.htaccess
-/.composer.lock
-public/.htaccess
 
+public/.htaccess
+/node_modules
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -18,3 +18,4 @@ public/.htaccess
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+composer.lock

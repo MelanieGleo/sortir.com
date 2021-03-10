@@ -3,89 +3,87 @@
 namespace App\Form\Profil;
 
 use App\Entity\Participant;
+
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
-class ModifierFormType extends AbstractType
+
+class ModifierFormType extends AbstractType implements FormTypeInterface
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudo', null,[
+            ->add('pseudo', TextType::class, [
                 "label" => "Pseudo"
             ])
-            ->add('prenom', null,[
+            ->add('prenom', TextType::class, [
                 "label" => "Prénom"
             ])
-            ->add('nom', null,[
+            ->add('nom', TextType::class, [
                 "label" => "Nom"
             ])
-            ->add('telephone', null,[
+            ->add('telephone', TelType::class, [
                 "label" => "Téléphone"
             ])
-            ->add('mail', EmailType::class,[
+            ->add('mail', EmailType::class, [
                 "label" => "Email"
             ])
-            ->add('motDePasse', PasswordType::class,[
-                "label" => "Mot de passe"
-            ])
+//            ->add('motDePasse', PasswordType::class, [
+//                "label" => "Mot de passe",
+//                "required" => false
+//            ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'required' => false,
                 'first_options' => [
-                    'constraints' => [
-                        new NotBlank([
-                            'message' => 'Please enter a password',
-                        ]),
-                        new Length([
-                            'min' => 6,
-                            'minMessage' => 'Your password should be at least {{ limit }} characters',
-                            // max length allowed by Symfony for security reasons
-                            'max' => 4096,
-                        ]),
-                    ],
-                    'label' => 'New password',
+                    'label' => 'Nouveau mot de passe',
                 ],
                 'second_options' => [
-                    'label' => 'Repeat Password',
+                    'label' => 'Confirmer mot de pass',
                 ],
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'Les mots de passes ne sont pas identiques.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
             ])
-            //  Todo          ->add('site')
-            //            TODO upload photo a adapter a notre besoin
-//            ->add('picture', FileType::class, [
-//                'mapped' => false,
-//                'constraints' => [
-//                    //contrainte de validation spécifique pour les images
-//                    //https://symfony.com/doc/current/reference/constraints/Image.html
-//                    new Image([
-//                        'maxSize' => '8M',
-//                        'maxSizeMessage' => 'too big!'
-//                    ])
-//                ]
-//            ])
-
-
-
-
-
-        ;
+            ->add('site', choiceType::class, [
+                'label' => 'Site ENI'
+            ])
+            ->add('photo', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    //contrainte de validation spécifique pour les images
+                    //https://symfony.com/doc/current/reference/constraints/Image.html
+                    new Image([
+                        'maxSize' => '8M',
+                        'maxSizeMessage' => 'too big!'
+                    ])
+                ]
+            ])
+            ->add('submit', SubmitType::class, [
+                "label" => $options['btn_text'],
+                //TODO styliser bouton
+                "attr" => ['class' => 'btn']
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Participant::class,
+            'btn_text' => 'Modifier'
         ]);
     }
 }
