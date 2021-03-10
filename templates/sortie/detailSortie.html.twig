@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block body %}
-    {% for sortie in sorties %}
         <div class="sortie container">
             <div class="element col-3x12">
                 <div class="photo">
@@ -16,9 +15,7 @@
             </div>
             <div class ="element col-9x12">
                 <div class="nom">
-                    <a href="sortie/{{ sortie.id }}">
-                        {{ sortie.nom }}
-                    </a>
+                    {{ sortie.nom }}
                 </div>
                 <div class="duree">
                     durée :
@@ -35,7 +32,24 @@
                 <div class="Infos">
                     {{ sortie.infosSortie }}
                 </div>
+                <div class="Site">
+                    dans la ville de :
+                    {{ sortie.site.nomSite }}
+                </div>
             </div>
         </div>
-    {% endfor %}
+        <div class="center">
+            <a href="" class="register"> s'inscrire </a>
+        </div>
+        <div class="participants">
+            Participants a cette sortie:
+            <ul>
+                {% for participant in sortie.participants %}
+                    <li>
+                        {{ participant.nom }} {{ participant.prenom }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
 {% endblock %}

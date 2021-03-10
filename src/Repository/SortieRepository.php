@@ -27,12 +27,19 @@ class SortieRepository extends ServiceEntityRepository
         return $profil;
     }
 
-    public function detailsSorties(): array
+    public function detailSorties($id): ?Sortie
     {
-        $queryBuilder = $this->createQueryBuilder("s");
+        $queryBuilder = $this->createQueryBuilder("s")
+            ->addSelect("p")
+            ->addSelect("s2")
+            ->addSelect("p2")
+            ->andWhere('s.id = :val')
+            ->setParameter('val', $id)
+            ->join("s.participOrga", 'p')
+            ->join("s.site", 's2')
+            ->leftJoin("s.participants", "p2");
         $query = $queryBuilder->getQuery();
-        $profil = $query->getResult();
-
+        $profil = $query->getOneOrNullResult();
         return $profil;
     }
     // /**

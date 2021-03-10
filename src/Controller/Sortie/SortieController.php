@@ -18,4 +18,16 @@ class SortieController extends AbstractController
         $sorties = $repo->InfosSorties();
         return $this->render('sortie/sortie.html.twig', ['sorties'=>$sorties]);
     }
+
+    /**
+     * @Route("/sortie/{id}", name="detailSortie", requirements={"id":"\d+"})
+     */
+    public function detailSortie($id): Response
+    {
+
+        $repo = $this->getDoctrine()->getRepository(Sortie::class);
+        //$sortie = $repo->find($id);
+        $sortie = $repo->detailSorties($id);
+        return $this->render('sortie/detailSortie.html.twig', ['sortie'=>$sortie]);
+    }
 }
