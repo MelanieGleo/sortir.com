@@ -24,7 +24,7 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $repo = $this->getDoctrine()->getRepository(Site::class);
+//        $repo = $this->getDoctrine()->getRepository(Site::class);
         $builder
             ->add('pseudo', TextType::class, [
                 "label" => "Pseudo"
