@@ -30,7 +30,7 @@ class ParticipantFixtures extends Fixture implements DependentFixtureInterface
      $participant->setTelephone('0630254555');
      $participant->setMail('marine@marine.com');
      $participant->setAdministrateur(false);
-     $participant->addSites($this->getReference(SiteFixtures::siteQuimper_Reference));
+     $participant->setSite($this->getReference(SiteFixtures::siteQuimper_Reference));
      $participant->setActif(true);
 
      $participant->setMotDePasse(($this->passwordEncoder->encodePassword(
@@ -47,7 +47,7 @@ class ParticipantFixtures extends Fixture implements DependentFixtureInterface
     $participant2->setTelephone('0630254556');
     $participant2->setMail('jb@jb.com');
     $participant2->setAdministrateur(false);
-    $participant2->addSites($this->getReference(SiteFixtures::siteRennes_Reference));
+    $participant2->setSite($this->getReference(SiteFixtures::siteRennes_Reference));
     $participant2->setActif(false);
     $participant2->setMotDePasse(($this->passwordEncoder->encodePassword(
         $participant2,
@@ -63,7 +63,7 @@ class ParticipantFixtures extends Fixture implements DependentFixtureInterface
     $participant3->setTelephone('0630254555');
     $participant3->setMail('melanie@melanie.com');
     $participant3->setAdministrateur(true);
-    $participant3->addSites($this->getReference(SiteFixtures::siteNantes_Reference));
+    $participant3->setSite($this->getReference(SiteFixtures::siteNantes_Reference));
     $participant3->setActif(true);
     $participant3->setMotDePasse(($this->passwordEncoder->encodePassword(
         $participant3,
