@@ -1,44 +1,36 @@
 {% extends 'base.html.twig' %}
 
+{% set queryParams = app.request.query.all %}
+{% set queryString = queryParams|filter((v, k) => k != "ajax" )|url_encode %}
+
 {% block title %}Sortie | {{ parent() }}{% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('css/sortie.css') }}">
 {% endblock %}
 
-
-
 {% block body %}
+    <div class="container filtre">
+        <form id="filters">
+            {% for site in sites %}
+            {% if queryParams is not empty and queryParams.sites is not empty %}
+                {% set checked = (site.id in queryParams.sites) ? "checked" : "" %}
+            {% else %}
+                {% set checked = "" %}
+            {% endif %}
+                <div>
+                    <p><input type="checkbox" name="sites[]" id="site{{ site.id }}" value="{{ site.id }}" {{ checked }}></p>
+                    <label for="cat{{ site.id }}">{{ site.nomSite }}</label>
+                </div>
+            {% endfor %}
+        </form>
+    </div>
+    <div id="content">
+        {% include "sortie/_contentSortie.html.twig" %}
+    </div>
 
-    {% for sortie in sorties %}
-        <div class="sortie container">
-            <div class="element col-3x12">
-                <div class="photo">
-                    <img src="{{ sortie.urlPhoto }}">
-                </div>
-            </div>
-            <div class ="element col-9x12">
-                <div class="nom">
-                    <a href="{{ path('app_detailSortie', {'id':sortie.id}) }}">
-                        {{ sortie.nom }}
-                    </a>
-                </div>
-                <div class="duree">
-                    durée :
-                    {{ sortie.duree }}
-                </div>
-                <div class="limiteinscription">
-                    date limite d'inscription :
-                    {{ sortie.dateLimitInscription|date("m/d/Y") }}
-                </div>
-                <div class="dateDebut">
-                    début :
-                    {{ sortie.dateHeureDebut|date("m/d/Y") }}
-                </div>
-                <div class="Infos">
-                    {{ sortie.infosSortie }}
-                </div>
-            </div>
-        </div>
-    {% endfor %}
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/filters.js') }}"></script>
 {% endblock %}
