@@ -13,6 +13,7 @@ class SortieController extends AbstractController
 {
     /**
      * @Route("/", name="app_sortie")
+     *
      **/
 
     public function sortie(): Response

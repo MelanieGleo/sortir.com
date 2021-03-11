@@ -25,7 +25,7 @@ class Ville
     private $nomVille;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=5)
      */
     private $codePostal;
 

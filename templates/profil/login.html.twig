@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion | {{ parent() }}{% endblock %}
 
 {% block lien %}
-
-    <a href="{{ path('app_register') }}">S'inscrire</a>
+{#    à conserver override le block lien de base.html.twig et permet de ne pas voir le lien Connesion dans le bandeau#}
 {% endblock %}
 
 {% block body %}
@@ -13,36 +12,16 @@
         <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
 
         <label for="inputPseudo">Pseudo</label>
-        <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required
-               autofocus>
+        <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required autofocus/>
 
         <label for="inputPassword">Password</label>
         <input type="password" name="password" id="inputPassword" class="form-control" required>
 
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}">
 
-        {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-        #}
-{#      {#  <form method="post">#}
-{#            #}{# ... your form fields #}
+        <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+        <label for="remember_me">Se souvenir de moi</label>
 
-{#            <input type="checkbox" id="remember_me" name="_remember_me" checked/>#}
-{#            <label for="remember_me">Se souvenir de moi</label>#}
-
-{#            #}{# ... #}
-{#        </form>#}
-
-
-{#        TODO Toggle switch bouton#}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-        <fieldset class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="remember_me_checkbox" name="_remember_me">
-            <label  class="custom-control-input" for="remember_me_checkbox" >Se souvenir de moi </label>
-        </fieldset>
 
         <div>
             <a href="{{ path('app_forgot_password_request') }}"> Mot de passe oublié </a>
