@@ -95,22 +95,22 @@ class Site
         return $this->Sorties;
     }
 
-    public function addSorty(Sortie $sorty): self
+    public function addSortie(Sortie $sortie): self
     {
-        if (!$this->Sorties->contains($sorty)) {
-            $this->Sorties[] = $sorty;
-            $sorty->setSite($this);
+        if (!$this->Sorties->contains($sortie)) {
+            $this->Sorties[] = $sortie;
+            $sortie->setSite($this);
         }
 
         return $this;
     }
 
-    public function removeSorty(Sortie $sorty): self
+    public function removeSortie(Sortie $sortie): self
     {
-        if ($this->Sorties->removeElement($sorty)) {
+        if ($this->Sorties->removeElement($sortie)) {
             // set the owning side to null (unless already changed)
-            if ($sorty->getSite() === $this) {
-                $sorty->setSite(null);
+            if ($sortie->getSite() === $this) {
+                $sortie->setSite(null);
             }
         }
 

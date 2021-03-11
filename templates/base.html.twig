@@ -28,16 +28,23 @@
         <div class="element col-3x12">
             {% block lien %}
                 {% if app.user %}
+
+                    {% if app.user.administrateur %}
+                        <a href="{{ path('app_register') }}">Inscrire un participant</a>
+                    {% endif %}
+
                     {% block autreLienProfil %}
                         <a href="{{ path('app_profil') }}"> Mon profil </a>
                     {%endblock%}
+
                     <a href="{{ path('app_logout') }}"> Se déconnecter </a>
                     <span>Participant: {{ app.user.prenom|first|upper }}{{ app.user.prenom|slice(1)|lower }} {{ app.user.nom|first|upper  }} . </span>
                     <span>Date du jour: {{ "now"|date("m/d/Y") }}</span>
-{#                    Todo ajouter date#}
+
                 {% else %}
-                    <a href="{{ path('app_register') }}">S'inscrire</a>
+
                     <a href=" {{ path ('app_login') }}">Connexion</a>
+
                 {% endif %}
             {% endblock %}
         </div>

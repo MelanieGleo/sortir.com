@@ -260,14 +260,12 @@ class Participant implements UserInterface
 
     public function getRoles(): array
     {
-//        $user = $this->getAdministrateur();
-//        if($user){
-//            $roles[] = 'ROLE_ADMIN';
-//        } else {
-//            $roles[] = 'ROLE_USER';
-//        }
-//        return array_unique($roles);
-        $roles[] = 'Role_User';
+        $user = $this->getAdministrateur();
+        if($user){
+            $roles[] = 'ROLE_ADMIN';
+        } else {
+            $roles[] = 'ROLE_USER';
+        }
         return array_unique($roles);
     }
 
@@ -312,4 +310,7 @@ class Participant implements UserInterface
         return $this;
     }
 
+
+
 }
+

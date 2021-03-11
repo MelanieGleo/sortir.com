@@ -16,6 +16,7 @@ class SortieController extends AbstractController
 {
     /**
      * @Route("/", name="app_sortie")
+     *
      **/
 
     public function sortie(SiteRepository $siteRepo, Request $request): Response

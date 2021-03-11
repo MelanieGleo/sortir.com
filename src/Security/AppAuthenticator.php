@@ -93,7 +93,7 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('app_sortie'));
+        return new RedirectResponse($this->urlGenerator->generate('app_login'));
 
     }
 
