@@ -6,6 +6,8 @@ use App\Entity\Sortie;
 use App\Form\Sortie\AjoutSortieType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +18,8 @@ class AjoutSortieController extends AbstractController
     /**
      * @Route("/sortie/ajout", name="app_ajoutSortie")
      * @param Request $request
-     * @param EntityManager $entityManager
+     * @param EntityManagerInterface $entityManager
      * @return Response
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function ajoutSortie(Request $request, EntityManagerInterface $entityManager): Response
     {

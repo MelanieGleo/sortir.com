@@ -27,18 +27,23 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
             ->add('pseudo', TextType::class, [
                 "label" => "Pseudo"
             ])
+
             ->add('prenom', TextType::class, [
                 "label" => "Prénom"
             ])
+            
             ->add('nom', TextType::class, [
                 "label" => "Nom"
             ])
+
             ->add('telephone', TelType::class, [
                 "label" => "Téléphone"
             ])
+
             ->add('mail', EmailType::class, [
                 "label" => "Email"
             ])
+
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => false,
@@ -53,6 +58,7 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
                 // this is read and encoded in the controller
                 'mapped' => false,
             ])
+
             ->add('site',EntityType::class,[
                 'class' => Site::class,
                 'choice_label' => function ($site) {
