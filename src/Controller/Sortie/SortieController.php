@@ -2,11 +2,9 @@
 
 namespace App\Controller\Sortie;
 
-use App\Entity\Participant;
+
 use App\Entity\Sortie;
-use App\Form\Sortie\AjoutSortieType;
 use App\Repository\SiteRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -56,6 +54,11 @@ class SortieController extends AbstractController
 
     /**
      * @Route("/inscrire/{sortieID}", name="app_inscriptionSortie", requirements={"sortieID":"\d+"})
+     * @param SiteRepository $siteRepo
+     * @param $sortieID
+     * @param EntityManagerInterface $em
+     * @param Request $request
+     * @return Response
      */
     public function inscriptionSortie(SiteRepository $siteRepo, $sortieID, EntityManagerInterface $em, Request $request): Response
     {

@@ -78,6 +78,7 @@ class ParticipantFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             SiteFixtures::class,
+
         ];
     }
 }

@@ -11,6 +11,7 @@
 
 {% block body %}
     <div class="container filtre">
+        <h2>filtrer les sorties</h2>
         <form id="filters">
             {% for site in sites %}
             {% if queryParams is not empty and queryParams.sites is not empty %}
