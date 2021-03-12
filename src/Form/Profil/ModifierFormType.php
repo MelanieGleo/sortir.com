@@ -4,8 +4,11 @@ namespace App\Form\Profil;
 
 use App\Entity\Participant;
 
+
 use App\Entity\Site;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -40,7 +43,6 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
             ->add('mail', EmailType::class, [
                 "label" => "Email"
             ])
-
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => false,
@@ -55,32 +57,30 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
                 // this is read and encoded in the controller
                 'mapped' => false,
             ])
-            ->add('site', ChoiceType::class, [
-                'label' => 'Site ENI',
-                'choices' => $options['sites']
-//                    [
-////                    'Nantes' => 'Site ENI Nantes',
-////                    'Rennes' => 'Site ENI Rennes',
-////                    'Quimper' => 'Site ENI Quimper'
-//                ]
+            ->add('site',EntityType::class,[
+                'class' => Site::class,
+                'choice_label' => function ($site) {
+                    return $site->getNomSite();
+                }
             ])
+
             ->add('photo', FileType::class, [
-                'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    //contrainte de validation spécifique pour les images
-                    //https://symfony.com/doc/current/reference/constraints/Image.html
-                    new Image([
-                        'maxSize' => '8M',
-                        'maxSizeMessage' => 'too big!'
-                    ])
-                ]
-            ])
-            ->add('submit', SubmitType::class, [
-                "label" => $options['btn_text'],
-                //TODO styliser bouton
-                "attr" => ['class' => 'btn']
-            ]);
+                    'mapped' => false,
+                    'required' => false,
+                    'constraints' => [
+                        //contrainte de validation spécifique pour les images
+                        //https://symfony.com/doc/current/reference/constraints/Image.html
+                        new Image([
+                            'maxSize' => '8M',
+                            'maxSizeMessage' => 'too big!'
+                        ])
+                    ]
+                ])
+                ->add('submit', SubmitType::class, [
+                    "label" => $options['btn_text'],
+                    //TODO styliser bouton
+                    "attr" => ['class' => 'btn']
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -90,7 +90,6 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
             'btn_text' => 'Modifier'
         ]);
     }
-
 
 
 }
