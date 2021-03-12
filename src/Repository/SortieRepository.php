@@ -19,12 +19,16 @@ class SortieRepository extends ServiceEntityRepository
         parent::__construct($registry, Sortie::class);
     }
 
-    public function InfosSorties(): array
+    public function InfosSorties($filters = null): array
     {
         $queryBuilder = $this->createQueryBuilder("s");
+        if($filters != null){
+            $queryBuilder->andWhere('s.site IN(:sites)')
+                ->setParameter(':sites', array_values($filters));
+        }
         $query = $queryBuilder->getQuery();
-        $profil = $query->getResult();
-        return $profil;
+        $sorties = $query->getResult();
+        return $sorties;
     }
 
     public function detailSorties($id): ?Sortie
@@ -39,8 +43,8 @@ class SortieRepository extends ServiceEntityRepository
             ->join("s.site", 's2')
             ->leftJoin("s.participants", "p2");
         $query = $queryBuilder->getQuery();
-        $profil = $query->getOneOrNullResult();
-        return $profil;
+        $sorties = $query->getOneOrNullResult();
+        return $sorties;
     }
     // /**
     //  * @return Sortie[] Returns an array of Sortie objects
