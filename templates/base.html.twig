@@ -36,7 +36,7 @@
                     {% block autreLienProfil %}
                         <a href="{{ path('app_profil') }}"> Mon profil </a>
                     {%endblock%}
-                    <a href="{{ path ('app_sortie') }}">Sortie</a>
+                    <a href="{{ path ('app_ajoutSortie') }}">Ajouter une Sortie</a>
                     <a href="{{ path('app_logout') }}"> Se déconnecter </a>
                     <span>Participant: {{ app.user.prenom|first|upper }}{{ app.user.prenom|slice(1)|lower }} {{ app.user.nom|first|upper  }} . </span>
                     <span>Date du jour: {{ "now"|date("m/d/Y") }}</span>

@@ -5,6 +5,7 @@ namespace App\Controller\Sortie;
 use App\Entity\Sortie;
 use App\Form\Sortie\AjoutSortieType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,22 +18,28 @@ class AjoutSortieController extends AbstractController
      * @param Request $request
      * @param EntityManager $entityManager
      * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function index(Request $request,EntityManager $entityManager): Response
+    public function ajoutSortie(Request $request, EntityManagerInterface $entityManager): Response
     {
 
-        $user = new Sortie();
-        $form = $this->createForm(AjoutSortieType::class, $user);
-        $form->handleRequest($request);
+        $ajoutSortie = new Sortie();
+        $ajouterSortieForm = $this->createForm(AjoutSortieType::class, $ajoutSortie);
+        $ajouterSortieForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($ajouterSortieForm->isSubmitted() && $ajouterSortieForm->isValid()) {
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
+
+            $entityManager->persist($ajoutSortie);
+
             $entityManager->flush();
+            return $this->redirectToRoute('app_sortie');
         }
-        return $this->render(sortie/sortie.html.twig, [
-            'registrationForm' => $form->createView(),
+
+
+        return $this->render('sortie/ajoutSortie.html.twig', [
+            "ajout_sortie" => $ajouterSortieForm->createView()
         ]);
     }
 }

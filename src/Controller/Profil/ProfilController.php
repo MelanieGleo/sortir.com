@@ -35,9 +35,6 @@ class ProfilController extends AbstractController
         ]);
     }
 
-
-
-
     /**
      * @Route("/profil/modifier", name="app_modifier")
      * @param EntityManagerInterface $entityManager

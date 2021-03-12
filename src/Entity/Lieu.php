@@ -137,4 +137,12 @@ class Lieu
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNomLieu()
+    {
+        return $this->nom_lieu;
+    }
 }

@@ -4,7 +4,9 @@ namespace App\Controller\Sortie;
 
 use App\Entity\Participant;
 use App\Entity\Sortie;
+use App\Form\Sortie\AjoutSortieType;
 use App\Repository\SiteRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,7 +19,10 @@ class SortieController extends AbstractController
     /**
      * @Route("/", name="app_sortie")
      *
-     **/
+     * @param SiteRepository $siteRepo
+     * @param Request $request
+     * @return Response
+     */
 
     public function sortie(SiteRepository $siteRepo, Request $request): Response
     {
