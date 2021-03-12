@@ -2,6 +2,8 @@
 
 namespace App\Controller\Profil;
 
+use App\Entity\Site;
+use App\Entity\Sortie;
 use App\Form\Profil\ModifierFormType;
 use claviska\SimpleImage;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,7 +24,15 @@ class ProfilController extends AbstractController
      */
     public function Accueil(): Response
     {
-        return $this->render('ajoutSortie.html.twig');
+        $repoSites = $this->getDoctrine()->getRepository(Site::class);
+        $sites = $repoSites->findAll();
+        $repoSortie = $this->getDoctrine()->getRepository(Sortie::class);
+        $sortie = $repoSortie->findAll();
+
+        return $this->render('sortie/sortie.html.twig',[
+            'sites' => $sites,
+            'sorties' => $sortie
+        ]);
     }
 
 
@@ -42,14 +52,16 @@ class ProfilController extends AbstractController
     public function modifier(EntityManagerInterface $entityManager, string $uploadDir, Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $repoSites = $this->getDoctrine()->getRepository(Site::class);
-        $sites = $repoSites->getAll();
+        $sites = $repoSites->findAll();
 
         $participant = $this->getUser();
         //crée le formulaire en lui passant l'instance
-        $profilForm = $this->createForm(ModifierFormType::class, [
-            'participant' => $participant,
-            'sites' => $sites
-        ]);
+        $profilForm = $this->createForm(ModifierFormType::class, $participant);
+//            [
+//            'participant' => $participant,
+//            'sites' => $sites
+//        ]
+//        );
         //traitement des données
         $profilForm->handleRequest($request);
 
