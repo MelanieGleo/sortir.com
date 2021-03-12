@@ -17,6 +17,15 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class ProfilController extends AbstractController
 {
 
+    /**
+     * @Route("/", name="app_index")
+     */
+    public function Accueil(): Response
+    {
+        return $this->render('ajoutSortie.html.twig');
+    }
+
+
 
 
     /**
