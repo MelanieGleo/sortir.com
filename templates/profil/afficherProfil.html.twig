@@ -60,7 +60,9 @@
                     Site :
                 </div>
                 <div class="info">
-                    {{ app.user.site.nomSite }}
+                    {% if app.user.site.nomSite is defined %}
+                        {{ app.user.site.nomSite }}
+                    {% endif %}
                 </div>
             </div>
         </div>

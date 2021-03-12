@@ -23,6 +23,7 @@ class AjoutSortieType extends AbstractType implements FormTypeInterface
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
             ->add('participOrga', EntityType::class, [
                 "label" => "Organisateur : ",
                 'class' => Participant::class,
@@ -44,31 +45,34 @@ class AjoutSortieType extends AbstractType implements FormTypeInterface
                     return $etat->getLibelle();
                 }
             ])
-            ->add('Lieu', EntityType::class, [
-                "label" => "Lieu : ",
-                'class' => Lieu::class,
-                'choice_label' => function ($lieu) {
-                    return $lieu->getNomLieu();
-                }
+            ->add('Lieu', TextType::class, [
+                "label" => "Lieu : "
             ])
+
             ->add('nom', TextType::class, [
                 "label" => "Nom de la sortie : "
             ])
+
             ->add('dateHeureDebut', DateTimeType::class, [
                 "label" => "Heure de début : "
             ])
+
             ->add('duree', IntegerType::class, [
                 "label" => "Durée: "
             ])
+
             ->add('dateLimitInscription', DateTimeType::class, [
                 "label" => "Date limite d'inscription: "
             ])
+
             ->add('nbInscriptionsMax', IntegerType::class, [
                 "label" => "Nombre de place : "
             ])
+
             ->add('infosSortie', TextType::class, [
                 "label" => "Description et infos :"
             ])
+
             ->add('submit', SubmitType::class, [
                 "label" => $options['btn_text'],
                 //TODO styliser bouton

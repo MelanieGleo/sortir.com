@@ -57,7 +57,7 @@ class SortieController extends AbstractController
     /**
      * @Route("/inscrire/{sortieID}", name="app_inscriptionSortie", requirements={"sortieID":"\d+"})
      */
-    public function inscriptionSortie($sortieID, EntityManagerInterface $em): Response
+    public function inscriptionSortie(SiteRepository $siteRepo, $sortieID, EntityManagerInterface $em, Request $request): Response
     {
         $participant = $this->getUser();
         $sortie = $em->getRepository('App:Sortie')
@@ -66,6 +66,20 @@ class SortieController extends AbstractController
         $em->persist($participant);
         $em->flush();
 
-        return $this->render('sortie/random.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Sortie::class);
+        $sites = $siteRepo->findAll();
+
+        //filtres
+        $filters = $request->get("sites");
+
+        $sorties = $repo->InfosSorties($filters);
+
+        if($request->get('ajax')){
+            return new JsonResponse([
+                'content' => $this->renderView('sortie/_contentSortie.html.twig', ['sorties' => $sorties])
+            ]);
+        }
+
+        return $this->render('sortie/sortie.html.twig', ['sorties' => $sorties, 'sites' => $sites]);
     }
 }
