@@ -22,7 +22,7 @@ class ProfilController extends AbstractController
      */
     public function Accueil(): Response
     {
-        return $this->render('index.html.twig');
+        return $this->render('ajoutSortie.html.twig');
     }
 
     /**
