@@ -4,6 +4,7 @@ namespace App\Form\Profil;
 
 use App\Entity\Participant;
 
+use App\Entity\Site;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -23,6 +24,7 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+//        $repo = $this->getDoctrine()->getRepository(Site::class);
         $builder
             ->add('pseudo', TextType::class, [
                 "label" => "Pseudo"
@@ -39,10 +41,7 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
             ->add('mail', EmailType::class, [
                 "label" => "Email"
             ])
-//            ->add('motDePasse', PasswordType::class, [
-//                "label" => "Mot de passe",
-//                "required" => false
-//            ])
+
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => false,
@@ -57,7 +56,7 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
                 // this is read and encoded in the controller
                 'mapped' => false,
             ])
-            ->add('site', choiceType::class, [
+            ->add('site', ChoiceType::class, [
                 'label' => 'Site ENI'
             ])
             ->add('photo', FileType::class, [
@@ -86,4 +85,5 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
             'btn_text' => 'Modifier'
         ]);
     }
+
 }

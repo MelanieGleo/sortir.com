@@ -72,17 +72,17 @@ class Participant implements UserInterface
     /**
      * @ORM\Column(type="string", length=20, unique=true)
      */
-    private $pseudo;
+    private ?string $pseudo;
 
     /**
      * @ORM\Column(type="string", length=250)
      */
-    private $motDePasse;
+    private ?string $motDePasse;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $emplacementPhoto;
+    private ?string $emplacementPhoto;
 
     public function __construct()
     {
@@ -258,7 +258,7 @@ class Participant implements UserInterface
         return $this;
     }
 
-    public function getRoles()
+    public function getRoles(): array
     {
         $user = $this->getAdministrateur();
         if($user){
@@ -269,11 +269,12 @@ class Participant implements UserInterface
         return array_unique($roles);
     }
 
+
     /**
      * @return string
      * @override
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->motDePasse;
     }
@@ -287,7 +288,7 @@ class Participant implements UserInterface
      * @return string
      * @override
      */
-    public function getUsername()
+    public function getUsername(): string
     {
        return $this->pseudo;
     }
@@ -309,4 +310,7 @@ class Participant implements UserInterface
         return $this;
     }
 
+
+
 }
+

@@ -25,6 +25,9 @@ class ProfilController extends AbstractController
         return $this->render('ajoutSortie.html.twig');
     }
 
+
+
+
     /**
      * @Route("/profil/modifier", name="app_modifier")
      * @param EntityManagerInterface $entityManager

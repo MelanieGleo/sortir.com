@@ -28,6 +28,9 @@ class AuthenticationController extends AbstractController
         return $this->render('profil/login.html.twig', [
                             'last_username' => $lastUsername,
                             'error' => $error]);
+
+        //todo si utilisateur pas actif il n a pas le droit de se logger et doit etre
+        // renvoyer sur une page avec un message qui l informe qu il doit contacter l admin a l adresse mail x@x.x
     }
 
     /**
@@ -36,7 +39,9 @@ class AuthenticationController extends AbstractController
     public function logout(): Response
     {
 //        TODO il faut retirer l utilisateur de la session
-        return $this->render('ajoutSortie.html.twig', [
+
+        return $this->render('profil/login.html.twig', [
+
 
         ]);
 //        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');

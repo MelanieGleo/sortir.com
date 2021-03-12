@@ -3,6 +3,10 @@
 
     {% block title %} Modifier votre profile | {{ parent() }}{% endblock %}
 
+            {% block autreLienProfil %}
+                <a href="{{ path('app_sortie') }}"> Sortie </a>
+                <a href=" {{ path ('app_profil') }}">Mon profil</a>
+            {% endblock %}
 {% block body %}
 
     <h1>Modifier votre profil</h1>
