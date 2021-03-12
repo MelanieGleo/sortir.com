@@ -39,3 +39,7 @@
 .submit {
     text-align: center;
 }
+
+.submit.element{
+    text-align:right;
+}
