@@ -41,7 +41,7 @@ class ParticipantFixtures extends Fixture implements DependentFixtureInterface
 
     $participant2 = New Participant();
 
-    $participant2->setPseudo('BJ');
+    $participant2->setPseudo('JB');
     $participant2->setPrenom('Jean-Baptise');
     $participant2->setNom('Ponnet');
     $participant2->setTelephone('0630254556');

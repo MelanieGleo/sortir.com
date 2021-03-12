@@ -32,9 +32,15 @@ class ProfilController extends AbstractController
     //UploadDir est défini dans config/services.yaml
     public function modifier(EntityManagerInterface $entityManager, string $uploadDir, Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
+        $repoSites = $this->getDoctrine()->getRepository(Site::class);
+        $sites = $repoSites->getAll();
+
         $participant = $this->getUser();
         //crée le formulaire en lui passant l'instance
-        $profilForm = $this->createForm(ModifierFormType::class, $participant);
+        $profilForm = $this->createForm(ModifierFormType::class, [
+            'participant' => $participant,
+            'sites' => $sites
+        ]);
         //traitement des données
         $profilForm->handleRequest($request);
 
@@ -96,7 +102,8 @@ class ProfilController extends AbstractController
         $this->addFlash('error', "Votre profil n'a pas pu etre modifier");
         return $this->render('profil/modifierProfil.html.twig', [
 
-            "modifier_profil_form" => $profilForm->createView()
+            "modifier_profil_form" => $profilForm->createView(),
+            "mesSites" => $sites
         ]);
     }
 

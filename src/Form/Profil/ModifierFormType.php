@@ -24,7 +24,6 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//        $repo = $this->getDoctrine()->getRepository(Site::class);
         $builder
             ->add('pseudo', TextType::class, [
                 "label" => "Pseudo"
@@ -57,7 +56,13 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
                 'mapped' => false,
             ])
             ->add('site', ChoiceType::class, [
-                'label' => 'Site ENI'
+                'label' => 'Site ENI',
+                'choices' => $options['sites']
+//                    [
+////                    'Nantes' => 'Site ENI Nantes',
+////                    'Rennes' => 'Site ENI Rennes',
+////                    'Quimper' => 'Site ENI Quimper'
+//                ]
             ])
             ->add('photo', FileType::class, [
                 'mapped' => false,
@@ -85,5 +90,7 @@ class ModifierFormType extends AbstractType implements FormTypeInterface
             'btn_text' => 'Modifier'
         ]);
     }
+
+
 
 }
