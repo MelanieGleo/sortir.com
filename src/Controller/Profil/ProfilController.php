@@ -56,12 +56,9 @@ class ProfilController extends AbstractController
 
         $participant = $this->getUser();
         //crée le formulaire en lui passant l'instance
-        $profilForm = $this->createForm(ModifierFormType::class, $participant);
-//            [
-//            'participant' => $participant,
-//            'sites' => $sites
-//        ]
-//        );
+        $profilForm = $this->createForm(ModifierFormType::class, $participant
+
+        );
         //traitement des données
         $profilForm->handleRequest($request);
 
@@ -123,8 +120,8 @@ class ProfilController extends AbstractController
         $this->addFlash('error', "Votre profil n'a pas pu etre modifier");
         return $this->render('profil/modifierProfil.html.twig', [
 
-            "modifier_profil_form" => $profilForm->createView(),
-            "mesSites" => $sites
+            "modifier_profil_form" => $profilForm->createView()
+
         ]);
     }
 
