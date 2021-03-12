@@ -31,7 +31,7 @@ class SortieController extends AbstractController
 
         //filtres
         $filters = $request->get("sites");
-
+        //filters est null de base dans infossorties
         $sorties = $repo->InfosSorties($filters);
 
         if($request->get('ajax')){
