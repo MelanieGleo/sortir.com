@@ -2,57 +2,90 @@
 
 namespace App\Form\Sortie;
 
+use App\Entity\Etat;
+use App\Entity\Participant;
+use App\Entity\Site;
 use App\Entity\Sortie;
-use Doctrine\DBAL\Types\IntegerType;
-use phpDocumentor\Reflection\Types\Integer;
-use phpDocumentor\Reflection\Types\String_;
+use App\Entity\Lieu;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
-class AjoutSortieType extends AbstractType
+
+class AjoutSortieType extends AbstractType implements FormTypeInterface
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('participOrga',TextType::class, [
-                "label" => "Participants"
+
+            ->add('participOrga', EntityType::class, [
+                "label" => "Organisateur : ",
+                'class' => Participant::class,
+                'choice_label' => function ($participant) {
+                    return $participant->getNom();
+                }
             ])
-            ->add('site', TextType::class, [
-                "label" => "Nom site"
+            ->add('site', EntityType::class, [
+                "label" => "Site ENI : ",
+                'class' => Site::class,
+                'choice_label' => function ($site) {
+                    return $site->getNomSite();
+                }
             ])
-            ->add('Etat', TextType::class, [
-                "label" => "Etat"
+            ->add('Etat', EntityType::class, [
+                "label" => "Etat : ",
+                'class' => Etat::class,
+                'choice_label' => function ($etat) {
+                    return $etat->getLibelle();
+                }
             ])
             ->add('Lieu', TextType::class, [
-                "label" => "Lieu"
+                "label" => "Lieu : "
             ])
+
             ->add('nom', TextType::class, [
-                "label" => "Nom"
+                "label" => "Nom de la sortie : "
             ])
-            ->add('dateHeureDebut',TextType::class, /*date("a", 1)*/ [
-                "label" => "Heure de début"
+
+            ->add('dateHeureDebut', DateTimeType::class, [
+                "label" => "Heure de début : "
             ])
-            ->add('duree', TextType::class, [
-                "label" => "Participants"
+
+            ->add('duree', IntegerType::class, [
+                "label" => "Durée: "
             ])
-            ->add('dateLimitInscription', TextType::class /*date("YYYY - MM - DD", 1)*/)
-            ->add('nbInscriptionsMax', TextType::class, [
-                "label" => "Lieu"
+
+            ->add('dateLimitInscription', DateTimeType::class, [
+                "label" => "Date limite d'inscription: "
             ])
+
+            ->add('nbInscriptionsMax', IntegerType::class, [
+                "label" => "Nombre de place : "
+            ])
+
             ->add('infosSortie', TextType::class, [
-                "label" => "Nom"
+                "label" => "Description et infos :"
             ])
-            ->add('urlPhoto', TextType::class, [
-                "label" => "Nom"
+
+            ->add('submit', SubmitType::class, [
+                "label" => $options['btn_text'],
+                //TODO styliser bouton
+                "attr" => ['class' => 'btn']
             ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Sortie::class,
+            'btn_text' => 'Valider'
         ]);
     }
 }
