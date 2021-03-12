@@ -18,7 +18,7 @@ class ProfilController extends AbstractController
 {
 
     /**
-     * @Route("/", name="app_index")
+     * @Route("/acc", name="app_index")
      */
     public function Accueil(): Response
     {

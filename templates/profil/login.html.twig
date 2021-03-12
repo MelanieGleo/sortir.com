@@ -6,29 +6,54 @@
 {#    à conserver override le block lien de base.html.twig et permet de ne pas voir le lien Connesion dans le bandeau#}
 {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
+
 {% block body %}
     <form method="post">
 
         <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+        <div class="zone form">
+            <div class="container">
+                <div class="field">
+                    <div class="label">
+                        <label for="inputPseudo">Pseudo</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required autofocus/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                    <label for="inputPassword">Password</label>
+                    </div>
+                    <div class="input">
+                        <input type="password" name="password" id="inputPassword" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-        <label for="inputPseudo">Pseudo</label>
-        <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required autofocus/>
 
-        <label for="inputPassword">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" required>
-
-
-        <input type="checkbox" id="remember_me" name="_remember_me" checked/>
-        <label for="remember_me">Se souvenir de moi</label>
-
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-        <div>
-            <a href="{{ path('app_forgot_password_request') }}"> Mot de passe oublié </a>
+            <div class="container connect">
+                <div class="element col-6x12 submit">
+                    <button class="button" type="submit">
+                        Connexion
+                    </button>
+                </div>
+                <div class="element col-6x12 remember">
+                    <div>
+                        <div>
+                            <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+                            <label for="remember_me">Se souvenir de moi</label>
+                        </div>
+                        <div>
+                        <a href="{{ path('app_forgot_password_request') }}"> Mot de passe oublié </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <button class="btn btn-lg btn-primary" type="submit">
-            Se connecter
-        </button>
     </form>
 {% endblock %}

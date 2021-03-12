@@ -16,16 +16,16 @@ class AjoutSortieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('participOrga',Integer::class, [
+            ->add('participOrga',TextType::class, [
                 "label" => "Participants"
             ])
-            ->add('site', null, [
+            ->add('site', TextType::class, [
                 "label" => "Nom site"
             ])
-            ->add('Etat', null, [
+            ->add('Etat', TextType::class, [
                 "label" => "Etat"
             ])
-            ->add('Lieu', null, [
+            ->add('Lieu', TextType::class, [
                 "label" => "Lieu"
             ])
             ->add('nom', TextType::class, [
@@ -41,10 +41,10 @@ class AjoutSortieType extends AbstractType
             ->add('nbInscriptionsMax', TextType::class, [
                 "label" => "Lieu"
             ])
-            ->add('infosSortie', null, [
+            ->add('infosSortie', TextType::class, [
                 "label" => "Nom"
             ])
-            ->add('urlPhoto', null, [
+            ->add('urlPhoto', TextType::class, [
                 "label" => "Nom"
             ]);
     }

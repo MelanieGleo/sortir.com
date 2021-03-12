@@ -6,24 +6,55 @@
     <a href="{{ path('app_sortie') }}">Sorties</a>
 {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
+
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
     <h1>S'inscrire</h1>
-
     {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.pseudo) }}
-    {{ form_row(registrationForm.motDePasseEnClair) }}
-    {{ form_row(registrationForm.nom) }}
-    {{ form_row(registrationForm.prenom) }}
-    {{ form_row(registrationForm.telephone) }}
-    {{ form_row(registrationForm.mail) }}
-    {{ form_row(registrationForm.agreeTerms) }}
-    {{ form_row(registrationForm.administrateur) }}
-    {{ form_row(registrationForm.actif) }}
+        <div class="zone form">
+            <div class="container">
+                <div class="registerform">
+                    <div class="field">
+                        {{ form_row(registrationForm.pseudo) }}
+                    </div>
+                    <div class="field">
+                        {{ form_row(registrationForm.motDePasseEnClair) }}
+                    </div>
+                    <div class="field">
+                        {{ form_row(registrationForm.nom) }}
+                    </div>
+                    <div class="field">
+                        {{ form_row(registrationForm.prenom) }}
+                    </div>
+                    <div class="field">
+                        {{ form_row(registrationForm.telephone) }}
+                    </div>
+                    <div class="field">
+                        {{ form_row(registrationForm.mail) }}
+                    </div>
+                    <div class="field">
+                        {{ form_row(registrationForm.agreeTerms) }}
+                    </div>
+                    <div class="field">
+                        {{ form_row(registrationForm.administrateur) }}
+                    </div>
+                    <div class="field">
+                        {{ form_row(registrationForm.actif) }}
+                    </div>
+                </div>
 
-    <button type="submit" class="btn">Register</button>
+                <div class="field">
+                    <button type="submit" class="button">Register</button>
+                </div>
+            </div>
+        </div>
+
+
     {{ form_end(registrationForm) }}
 {% endblock %}
