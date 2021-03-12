@@ -7,22 +7,46 @@
                 <a href="{{ path('app_sortie') }}"> Sortie </a>
                 <a href=" {{ path ('app_profil') }}">Mon profil</a>
             {% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
+
 {% block body %}
 
     <h1>Modifier votre profil</h1>
 
         {{ form_start(modifier_profil_form) }}
-
-            {{ form_row(modifier_profil_form.pseudo) }}
-            {{ form_row(modifier_profil_form.prenom) }}
-            {{ form_row(modifier_profil_form.nom) }}
-            {{ form_row(modifier_profil_form.telephone) }}
-            {{ form_row(modifier_profil_form.mail) }}
-            {{ form_row(modifier_profil_form.plainPassword) }}
-            {{ form_widget(modifier_profil_form.site) }}
-            {{ form_row(modifier_profil_form.photo) }}
-
-
+            <div class="zone form">
+                <div class="container">
+                    <div class="registerform">
+                        <div class="field">
+                            {{ form_row(modifier_profil_form.pseudo) }}
+                        </div>
+                        <div class="field">
+                            {{ form_row(modifier_profil_form.prenom) }}
+                        </div>
+                        <div class="field">
+                            {{ form_row(modifier_profil_form.nom) }}
+                        </div>
+                        <div class="field">
+                            {{ form_row(modifier_profil_form.telephone) }}
+                        </div>
+                        <div class="field">
+                            {{ form_row(modifier_profil_form.mail) }}
+                        </div>
+                        <div class="field">
+                            {{ form_row(modifier_profil_form.plainPassword) }}
+                        </div>
+                        <div class="field">
+                            {{ form_row(modifier_profil_form.site) }}
+                        </div>
+                        <div class="field">
+                            {{ form_row(modifier_profil_form.photo) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
         {{ form_end(modifier_profil_form) }}
 
 
