@@ -92,3 +92,10 @@ p{
 }
 /*form*/
 
+h1{
+    text-align:center;
+}
+
+.mainTitle{
+    text-align:unset;
+}

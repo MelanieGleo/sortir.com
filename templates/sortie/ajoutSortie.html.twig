@@ -2,8 +2,51 @@
 
 {% block title %}Hello AjoutSortieController!{% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
+
 {% block body %}
-
-    {{ form(ajout_sortie) }}
-
+    <h1>S'inscrire</h1>
+    {{ form_start(ajout_sortie) }}
+    <div class="zone form">
+        <div class="container">
+            <div class="registerform">
+                <div class="field">
+                    {{ form_row(ajout_sortie.participOrga) }}
+                </div>
+                <div class="field">
+                    {{ form_row(ajout_sortie.site) }}
+                </div>
+                <div class="field">
+                    {{ form_row(ajout_sortie.Etat) }}
+                </div>
+                <div class="field">
+                    {{ form_row(ajout_sortie.Lieu) }}
+                </div>
+                <div class="field">
+                    {{ form_row(ajout_sortie.nom) }}
+                </div>
+                <div class="field">
+                    {{ form_row(ajout_sortie.dateHeureDebut) }}
+                </div>
+                <div class="field">
+                    {{ form_row(ajout_sortie.duree) }}
+                </div>
+                <div class="field">
+                    {{ form_row(ajout_sortie.dateLimitInscription) }}
+                </div>
+                <div class="field">
+                    {{ form_row(ajout_sortie.nbInscriptionsMax) }}
+                </div>
+                <div class="field">
+                    {{ form_row(ajout_sortie.infosSortie) }}
+                </div>
+                <div class="field submit">
+                    {{ form_row(ajout_sortie.submit) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(ajout_sortie) }}
 {% endblock %}
