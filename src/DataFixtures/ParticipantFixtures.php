@@ -22,6 +22,7 @@ class ParticipantFixtures extends Fixture implements DependentFixtureInterface
     }
     public function load(ObjectManager $manager)
     {
+
     $participant = New Participant();
 
      $participant->setPseudo('Marine');

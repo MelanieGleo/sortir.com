@@ -20,7 +20,7 @@ class ProfilController extends AbstractController
 {
 
     /**
-     * @Route("/acc", name="app_index")
+     * @Route("/", name="app_index")
      */
     public function Accueil(): Response
     {

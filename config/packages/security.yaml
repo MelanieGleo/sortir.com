@@ -8,7 +8,7 @@ security:
       entity:
         # the class of the entity that represents users
         class: App\Entity\Participant
-        property: pseudo
+        property: nom
 
       # used to reload user from session & other features (e.g. switch_user)
   firewalls:
@@ -48,5 +48,6 @@ security:
   access_control:
     - { path: ^/register, roles: ROLE_ADMIN }
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/reset-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/*, roles: [IS_AUTHENTICATED_FULLY] }
 

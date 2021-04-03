@@ -3,57 +3,49 @@
 {% block title %}Connexion | {{ parent() }}{% endblock %}
 
 {% block lien %}
-{#    à conserver override le block lien de base.html.twig et permet de ne pas voir le lien Connesion dans le bandeau#}
+    {# à conserver override le block lien de base.html.twig et permet de ne pas voir le lien Connesion dans le bandeau #}
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
 {% endblock %}
 
 {% block body %}
+
     <form method="post">
 
-        <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-        <div class="zone form">
-            <div class="container">
-                <div class="field">
-                    <div class="label">
-                        <label for="inputPseudo">Pseudo</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required autofocus/>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="label">
-                    <label for="inputPassword">Password</label>
-                    </div>
-                    <div class="input">
-                        <input type="password" name="password" id="inputPassword" class="form-control" required>
-                    </div>
-                </div>
+        <div class="h-100 p-5 bg-light border rounded-3">
+            <fieldset>
+            <legend>Connection</legend>
+
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" value="{{ last_username }}" class="form-control" id="username"
+                       placeholder="Nom d'utilisateur" name="username" required autofocus>
             </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-
-            <div class="container connect">
-                <div class="element col-6x12 submit">
-                    <button class="button" type="submit">
-                        Connexion
-                    </button>
-                </div>
-                <div class="element col-6x12 remember">
-                    <div>
-                        <div>
-                            <input type="checkbox" id="remember_me" name="_remember_me" checked/>
-                            <label for="remember_me">Se souvenir de moi</label>
-                        </div>
-                        <div>
-                        <a href="{{ path('app_forgot_password_request') }}"> Mot de passe oublié </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="remember_me">Se souvenir de moi</label>
+                <input type="checkbox" id="remember_me" name="_remember_me" checked/>
             </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </div>
+
+                <div class="form-group">
+                    <a href="{{ path('app_forgot_password_request') }}"> Mot de passe oublié </a>
+                </div>
+
+            </fieldset>
         </div>
+
     </form>
+
 {% endblock %}

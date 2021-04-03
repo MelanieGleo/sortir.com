@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=ParticipantRepository::class)
- * @UniqueEntity(fields={"pseudo"}, message="There is already an account with this pseudo")
+ * @UniqueEntity(fields={"nom"}, message="There is already an account with this nom")
  //todo ajout email a unique entity
 
  */
@@ -290,7 +290,7 @@ class Participant implements UserInterface
      */
     public function getUsername(): string
     {
-       return $this->pseudo;
+       return $this->nom;
     }
 
     public function eraseCredentials()
