@@ -18,7 +18,7 @@ public/.htaccess
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
-composer.lock
+
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
