@@ -273,6 +273,7 @@ class Participant implements UserInterface
     /**
      * @return string
      * @override
+     * besoins pour userInterface
      */
     public function getPassword(): string
     {
@@ -287,6 +288,7 @@ class Participant implements UserInterface
     /**
      * @return string
      * @override
+     * besoins pour userInterface
      */
     public function getUsername(): string
     {
