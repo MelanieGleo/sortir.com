@@ -15,4 +15,8 @@ framework:
     #fragments: true
     php_errors:
         log: true
+#TODO contournement certificat sur post dev
+    http_client:
+        default_options:
+            verify_peer: false
 
