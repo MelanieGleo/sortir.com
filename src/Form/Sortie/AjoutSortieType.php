@@ -47,7 +47,6 @@ class AjoutSortieType extends AbstractType implements FormTypeInterface
             ])
             ->add('Lieu', TextType::class, [
                 "label" => "Lieu : ",
-
             ])
 
             ->add('nom', TextType::class, [

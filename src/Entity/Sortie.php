@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SortieRepository;
+use ContainerLkPeSs5\getDoctrine_Orm_DefaultEntityManager_PropertyInfoExtractorService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -78,7 +79,7 @@ class Sortie
     private $Etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="Sorties")
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="Sorties", cascade="persist")
      */
     private $Lieu;
 
@@ -239,13 +240,21 @@ class Sortie
         return $this;
     }
 
-    public function getLieu(): ?Lieu
+    public function getLieu(): ?String
     {
-        return $this->Lieu;
+        $Lieu = $this->Lieu;
+
+        if (null !== $Lieu) return $Lieu->getNomLieu();
+
+        return null;
     }
 
-    public function setLieu(?Lieu $Lieu): self
+    public function setLieu(?String $nomLieu): self
     {
+        $Lieu = new Lieu();
+
+        $Lieu->setNomLieu($nomLieu);
+
         $this->Lieu = $Lieu;
 
         return $this;

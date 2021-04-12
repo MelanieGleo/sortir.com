@@ -23,7 +23,7 @@ class AjoutSortieController extends AbstractController
      */
     public function ajoutSortie(Request $request, EntityManagerInterface $entityManager, CallApiService $callApiService): Response
     {
-        dd($callApiService);
+//        dd($callApiService);
         $ajoutSortie = new Sortie();
         $ajouterSortieForm = $this->createForm(AjoutSortieType::class, $ajoutSortie);
         $ajouterSortieForm->handleRequest($request);

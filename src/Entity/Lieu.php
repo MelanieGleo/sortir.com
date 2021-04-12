@@ -145,4 +145,10 @@ class Lieu
     {
         return $this->nom_lieu;
     }
+
+    public function setNomLieu(String $nomLieu): self
+    {
+        $this->nom_lieu = $nomLieu;
+        return $this;
+    }
 }
